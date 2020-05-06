@@ -17,6 +17,9 @@ const SelectModule = () => {
 					<PersonSelect order={'Second'} />
 				</div>
 			</div>
+			<div className={cn.controls}>
+				<button className={cn.runComparison}>Run Comparison</button>
+			</div>
 		</div>
 	);
 };
@@ -36,17 +39,55 @@ const cn = {
 		margin-top: 40px;
 		padding: 10px;
 	`,
+	controls: css`
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		height: 20%;
+		width: 100%;
+	`,
 	headerText: css`
 		font-family: Ubuntu, sans-serif;
 		font-size: 1.6rem;
 		color: #2d3142;
+	`,
+	runComparison: css`
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		border-radius: 3px;
+		border: none;
+		height: 40px;
+		padding-left: 15px;
+		padding-right: 15px;
+		background: #2e7d32;
+		color: white;
+		font-family: ubuntu, sans-serif;
+		font-size: 1.2rem;
+		box-shadow: 0px 0px 3px #2e7d32;
+		&:active {
+			box-shadow: inset 0px 0px 4px black;
+			outline: none;
+		}
+		&:focus {
+			outline: none;
+		}
+		&:hover {
+			cursor: pointer;
+		}
+		&:disabled {
+			background: #a0a0a0;
+			box-shadow: none;
+		}
 	`,
 	selectGroup: css`
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		justify-content: space-evenly;
-		height: 80%;
+		height: 60%;
 		width: 100%;
 	`,
 	selectHeader: css`

@@ -17,7 +17,19 @@ const Main = () => {
 		new Promise((resolve, reject) => {
 			getPeople('https://swapi.dev/api/people/', [], resolve, reject);
 		}).then((res) => {
-			dispatch(setPeople(res));
+			dispatch(
+				setPeople(
+					res.map((person) => {
+						return {
+							name: person.name,
+							films: person.films,
+							homeworld: person.homeworld,
+							starships: person.starships,
+							vehicles: person.vehicles,
+						};
+					})
+				)
+			);
 			dispatch(setLoadingFalse());
 		});
 	}, []);

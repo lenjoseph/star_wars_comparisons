@@ -1,10 +1,24 @@
 import React from 'react';
 import { css } from 'emotion';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import '../styles/styles.css';
+import { setFirstPerson, setSecondPerson } from '../actions/person';
 
 const PersonSelect = (order) => {
 	const people = useSelector((state) => state.people);
+
+	let personOne = useSelector((state) => state.personOne);
+	let personTwo = useSelector((state) => state.personTwo);
+
+	const dispatch = useDispatch();
+
+	const setPerson = (person) => {
+		if (order.order === 'First') {
+			dispatch(setFirstPerson({ personOne: person }));
+		} else {
+			dispatch(setSecondPerson({ personTwo: person }));
+		}
+	};
 
 	return (
 		<div className={cn.container}>
@@ -12,7 +26,10 @@ const PersonSelect = (order) => {
 			<select
 				className={cn.select}
 				defaultValue={people[0].name}
-				onChange={() => {}}
+				onChange={(e) => {
+					e.preventDefault();
+					setPerson(e.target.value);
+				}}
 			>
 				{people.map((person, key) => {
 					return (
@@ -22,6 +39,18 @@ const PersonSelect = (order) => {
 					);
 				})}
 			</select>
+			<div className={cn.selected}>
+				{order.order === 'First' && (
+					<p className={cn.selectedText}>
+						Selected Person: {personOne.personOne}
+					</p>
+				)}
+				{order.order === 'Second' && (
+					<p className={cn.selectedText}>
+						Selected Person: {personTwo.personTwo}
+					</p>
+				)}
+			</div>
 		</div>
 	);
 };
@@ -32,7 +61,7 @@ const cn = {
 		flex-direction: column;
 		align-items: center;
 		width: 90%;
-		height: 70%;
+		height: 80%;
 		padding-top: 30px;
 		border-radius: 4px;
 		background: #2d3142;
@@ -52,6 +81,11 @@ const cn = {
 		font-family: Ubuntu, sans-serif;
 		font-size: 1rem;
 		border-radius: 2px;
+	`,
+	selectedText: css`
+		color: #f8f8f8;
+		font-size: 1.1rem;
+		font-family: Ubuntu, sans-serif;
 	`,
 };
 

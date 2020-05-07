@@ -6,6 +6,7 @@ import { setLoadingTrue, setLoadingFalse } from '../actions/loading';
 import { updateResults, showResults, clearResults } from '../actions/results';
 import { comparePeople } from '../helpers/comparePeople';
 import '../styles/styles.css';
+import { resetSelections } from '../actions/person.js';
 
 const AnalysisModule = () => {
 	let people = useSelector((state) => state.people);
@@ -13,8 +14,9 @@ const AnalysisModule = () => {
 	let personTwo = useSelector((state) => state.personTwo);
 	const dispatch = useDispatch();
 	useEffect(() => {
-		// clearing out results from previous analysis stored in state
+		// clearing out results and selections from previous analysis stored in state
 		dispatch(clearResults());
+		dispatch(resetSelections());
 	}, []);
 	const startComparison = async () => {
 		dispatch(setLoadingTrue());

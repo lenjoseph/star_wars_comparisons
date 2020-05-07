@@ -11,3 +11,9 @@ export const setSecondPerson = (payload) => {
 		payload,
 	};
 };
+
+export const resetSelections = () => {
+	return {
+		type: 'RESET_SELECTIONS',
+	};
+};

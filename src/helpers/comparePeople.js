@@ -16,7 +16,7 @@ export const comparePeople = async (p1, p2, people) => {
 			return person.name === p2;
 		})
 	);
-
+	console.log(personArray);
 	// determine overlap in films
 	const commonFilms = [];
 	if (personArray[0].films.length && personArray[1].films.length) {
@@ -37,7 +37,7 @@ export const comparePeople = async (p1, p2, people) => {
 
 	//    break analysis if characters were never in the same film
 	if (!commonFilms.length) {
-		return `${p1} and ${p2} were never in the same film.`;
+		return [`${p1} and ${p2} were never in the same film.`];
 	}
 
 	const [

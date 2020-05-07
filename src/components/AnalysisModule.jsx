@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { css } from 'emotion';
 import { useDispatch, useSelector } from 'react-redux';
 import PersonSelect from './PersonSelect.jsx';
 import { setLoadingTrue, setLoadingFalse } from '../actions/loading';
+import { updateResults, showResults } from '../actions/results';
 import { comparePeople } from '../helpers/comparePeople';
 import '../styles/styles.css';
 
 const AnalysisModule = () => {
-	const [finalResults, updateFinalResults] = useState([]);
-
 	let people = useSelector((state) => state.people);
 	let personOne = useSelector((state) => state.personOne);
 	let personTwo = useSelector((state) => state.personTwo);
@@ -22,38 +21,43 @@ const AnalysisModule = () => {
 			personTwo.personTwo,
 			people
 		);
-		let concatenatedResults = [].concat.apply([], results);
-		console.log(concatenatedResults);
+		let finalResults =
+			typeof results === String ? results : [].concat.apply([], results);
+		// data is ready before settimeout finished, but the delay makes the transition more engaging
 		setTimeout(() => {
 			dispatch(setLoadingFalse());
+			dispatch(updateResults(finalResults));
+			dispatch(showResults());
 		}, 2000);
 	};
 
 	return (
-		<div className={cn.container}>
-			<div className={cn.selectHeader}>
-				<p className={cn.headerText}>Select two people to compare</p>
-			</div>
-			<div className={cn.selectGroup}>
-				<div className={cn.selectSide}>
-					<PersonSelect order={'First'} />
+		<>
+			<div className={cn.container}>
+				<div className={cn.selectHeader}>
+					<p className={cn.headerText}>Select two people to compare</p>
 				</div>
-				<div className={cn.selectSide}>
-					<PersonSelect order={'Second'} />
+				<div className={cn.selectGroup}>
+					<div className={cn.selectSide}>
+						<PersonSelect order={'First'} />
+					</div>
+					<div className={cn.selectSide}>
+						<PersonSelect order={'Second'} />
+					</div>
+				</div>
+				<div className={cn.controls}>
+					<button
+						disabled={!personOne.personOne || !personTwo.personTwo}
+						onClick={() => {
+							startComparison();
+						}}
+						className={cn.runComparison}
+					>
+						Run Comparison
+					</button>
 				</div>
 			</div>
-			<div className={cn.controls}>
-				<button
-					disabled={!personOne.personOne || !personTwo.personTwo}
-					onClick={() => {
-						startComparison();
-					}}
-					className={cn.runComparison}
-				>
-					Run Comparison
-				</button>
-			</div>
-		</div>
+		</>
 	);
 };
 

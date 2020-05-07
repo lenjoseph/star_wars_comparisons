@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
-import { getPeople } from '../helpers/getPeople';
-import { setPeople } from '../actions/people';
-import { setLoadingFalse } from '../actions/loading';
+import { getPeople } from '../../helpers/getPeople';
+import { setPeople } from '../../actions/analysis/people';
+import { setLoadingFalse } from '../../actions/main/loading';
 import { css } from 'emotion';
 import Header from './Header.jsx';
 import Loading from './Loading.jsx';
-import AnalysisModule from './AnalysisModule.jsx';
-import Results from './Results.jsx';
+import AnalysisModule from '../analysis/AnalysisModule.jsx';
+import Results from '../results/Results.jsx';
 
 const Main = () => {
 	const dispatch = useDispatch();

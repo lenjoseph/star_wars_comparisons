@@ -2,11 +2,15 @@ import React, { useEffect } from 'react';
 import { css } from 'emotion';
 import { useDispatch, useSelector } from 'react-redux';
 import PersonSelect from './PersonSelect.jsx';
-import { setLoadingTrue, setLoadingFalse } from '../actions/loading';
-import { updateResults, showResults, clearResults } from '../actions/results';
-import { comparePeople } from '../helpers/comparePeople';
-import '../styles/styles.css';
-import { resetSelections } from '../actions/person.js';
+import { setLoadingTrue, setLoadingFalse } from '../../actions/main/loading';
+import {
+	updateResults,
+	showResults,
+	clearResults,
+} from '../../actions/results/results';
+import { comparePeople } from '../../helpers/comparePeople';
+import '../../styles/styles.css';
+import { resetSelections } from '../../actions/analysis/person.js';
 
 const AnalysisModule = () => {
 	let people = useSelector((state) => state.people);
@@ -89,6 +93,7 @@ const cn = {
 		border-radius: 8px;
 		margin-top: 40px;
 		padding: 10px;
+		transition: all 0.5s;
 	`,
 	controls: css`
 		display: flex;

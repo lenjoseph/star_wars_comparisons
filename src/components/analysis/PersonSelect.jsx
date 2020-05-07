@@ -1,8 +1,8 @@
 import React from 'react';
 import { css } from 'emotion';
 import { useSelector, useDispatch } from 'react-redux';
-import '../styles/styles.css';
-import { setFirstPerson, setSecondPerson } from '../actions/person';
+import '../../styles/styles.css';
+import { setFirstPerson, setSecondPerson } from '../../actions/analysis/person';
 
 const PersonSelect = (order) => {
 	const people = useSelector((state) => state.people);

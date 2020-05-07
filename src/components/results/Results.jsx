@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { css } from 'emotion';
-import '../styles/styles.css';
-import { hideResults } from '../actions/results';
-import { setLoadingTrue, setLoadingFalse } from '../actions/loading';
+import '../../styles/styles.css';
+import { hideResults } from '../../actions/results/results';
+import { setLoadingTrue, setLoadingFalse } from '../../actions/main/loading';
 
 const Results = () => {
 	const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const Results = () => {
 	};
 	return (
 		<div className={cn.container}>
-			<div style={{ animation: 'slide 360s linear' }} className={cn.slideText}>
+			<div style={{ animation: 'slide 240s linear' }} className={cn.slideText}>
 				{results.map((result, key) => {
 					return (
 						<p style={{ marginBottom: '5px' }} key={key}>
@@ -45,11 +45,11 @@ const cn = {
 		flex-direction: row;
 		align-items: flex-start;
 		justify-content: center;
-		height: 70%;
+		height: 80%;
 		min-height: 450px;
 		max-height: 500px;
 		perspective: 400px;
-		width: 60%;
+		width: 70%;
 		background: transparent;
 		border-radius: 8px;
 		box-shadow: 0px 0px 14px #f8f8f8;
@@ -98,7 +98,8 @@ const cn = {
 		background: transparent;
 		color: #f8f8f8;
 		font-family: Ubuntu, sans-serif;
-		font-size: 1.2rem;
+		font-size: 1.5rem;
+		transition: all 0.5s;
 	`,
 };
 export default Results;

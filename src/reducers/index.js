@@ -1,9 +1,9 @@
-import { setPeople } from './setPeople';
-import { setLoading } from './setLoading';
-import { setPersonOne } from './setPersonOne';
-import { setPersonTwo } from './setPersonTwo';
-import { updateResults } from './setResults';
-import { toggleResults } from './toggleResults';
+import { setPeople } from './analysis/setPeople';
+import { setLoading } from './main/setLoading';
+import { setPersonOne } from './analysis/setPersonOne';
+import { setPersonTwo } from './analysis/setPersonTwo';
+import { updateResults } from './results/setResults';
+import { toggleResults } from './results/toggleResults';
 import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({

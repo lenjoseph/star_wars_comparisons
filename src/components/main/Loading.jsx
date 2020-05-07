@@ -1,6 +1,6 @@
 import React from 'react';
 import { css } from 'emotion';
-import '../styles/styles.css';
+import '../../styles/styles.css';
 
 const Loading = () => {
 	return (
@@ -37,6 +37,7 @@ const cn = {
 		box-shadow: 0px 0px 14px #f8f8f8;
 		margin-top: 40px;
 		padding: 10px;
+		transition: all 0.5s;
 	`,
 	loadingDot: css`
 		display: flex;

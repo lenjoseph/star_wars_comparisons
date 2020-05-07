@@ -87,8 +87,8 @@ body {
 		transform: rotateX(20deg) translateZ(0);
 	}
 	100% {
-		top: -2500px;
-		transform: rotateX(35deg) translateZ(-2800px);
+		top: -3500px;
+		transform: rotateX(125deg) translateZ(-4000px);
 	}
 }
 
@@ -98,7 +98,7 @@ body {
 
 .fade-enter-active {
 	opacity: 1;
-	transition: opacity 400ms;
+	transition: all 400ms;
 }
 
 .fade-exit {
@@ -107,5 +107,5 @@ body {
 
 .fade-exit-active {
 	opacity: 0;
-	transition: opacity 400ms;
+	transition: all 400ms;
 }

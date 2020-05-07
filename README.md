@@ -4,8 +4,8 @@ react app to compare star wars characters and identify whether they have lived a
 # running the app
 1. Ensure Node and NPM are installed
 2. Clone this repo
-3. run 'npm i' to download node module depenedencies
-4. run 'npm start' to run the server on localhost:8080
+3. run 'npm i' inside the root directory of this project to download node module depenedencies
+4. run 'npm start' inside the root directory of this project to run the server on localhost:8080
 
 # notable areas for improvement
 1. There is some duplicate code that needs to be extracted into helper functions

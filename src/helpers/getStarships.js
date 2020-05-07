@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getStarships = async (p1, p2, personArray, commonFilms) => {
+export const getStarships = async (p1, p2, personArray, commonFilmNames) => {
 	// isolate common starships
 
 	const commonStarships = personArray[0].starships.filter((starship) => {
@@ -32,16 +32,8 @@ export const getStarships = async (p1, p2, personArray, commonFilms) => {
 			)
 		);
 
-		const filmObjs = await Promise.all(
-			commonFilms.map((url) =>
-				axios.get(url).then((res) => {
-					return res.data.title;
-				})
-			)
-		);
-
 		const filteredStarships = starshipObjs.map((ss) => {
-			let films = ss.films.filter((film) => filmObjs.includes(film));
+			let films = ss.films.filter((film) => commonFilmNames.includes(film));
 			return { name: ss.name, films: films };
 		});
 

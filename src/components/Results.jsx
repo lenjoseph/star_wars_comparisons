@@ -14,20 +14,14 @@ const Results = () => {
 	};
 	return (
 		<div className={cn.container}>
-			<div style={{ animation: 'slide 180s linear' }} className={cn.slideText}>
-				{results.length > 0 &&
-					results.map((result, key) => {
-						return (
-							<p style={{ marginBottom: '10px' }} key={key}>
-								{result}
-							</p>
-						);
-					})}
-				{results.length === 0 && (
-					<p
-						style={{ marginBottom: '10px' }}
-					>{`${p1} and ${p2} appeared in one or more films toghter, but never shared a vehicle, starship, or homeland.`}</p>
-				)}
+			<div style={{ animation: 'slide 360s linear' }} className={cn.slideText}>
+				{results.map((result, key) => {
+					return (
+						<p style={{ marginBottom: '5px' }} key={key}>
+							{result}
+						</p>
+					);
+				})}
 			</div>
 			<button
 				className={cn.resultsBtn}
@@ -45,13 +39,13 @@ const cn = {
 	container: css`
 		display: flex;
 		flex-direction: row;
-		align-items: center;
+		align-items: flex-start;
 		justify-content: center;
 		height: 70%;
 		min-height: 450px;
 		max-height: 500px;
 		perspective: 400px;
-		width: 50%;
+		width: 60%;
 		background: transparent;
 		border-radius: 8px;
 		box-shadow: 0px 0px 14px #f8f8f8;
@@ -60,7 +54,7 @@ const cn = {
 	`,
 	resultsBtn: css`
 		position: absolute;
-		bottom: 0;
+		top: 0;
 		right: 0;
 		display: flex;
 		flex-direction: row;
@@ -100,7 +94,7 @@ const cn = {
 		background: transparent;
 		color: #f8f8f8;
 		font-family: Ubuntu, sans-serif;
-		font-size: 1.4rem;
+		font-size: 1.2rem;
 	`,
 };
 export default Results;

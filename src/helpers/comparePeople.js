@@ -16,7 +16,7 @@ export const comparePeople = async (p1, p2, people) => {
 			return person.name === p2;
 		})
 	);
-	console.log(personArray);
+
 	// determine overlap in films
 	const commonFilms = [];
 	if (personArray[0].films.length && personArray[1].films.length) {
@@ -40,15 +40,29 @@ export const comparePeople = async (p1, p2, people) => {
 		return [`${p1} and ${p2} were never in the same film.`];
 	}
 
+	// get names of shared films
+	const commonFilmNames = await Promise.all(
+		commonFilms.map((url) =>
+			axios.get(url).then((res) => {
+				return res.data.title;
+			})
+		)
+	);
+
+	const commonFilmResults = [];
+
+	commonFilmNames.forEach((name) => {
+		commonFilmResults.push(`${p1} and ${p2} were seen together in ${name}`);
+	});
 	const [
 		homeworldResults,
 		vehicleResults,
 		starshipResults,
 	] = await Promise.all([
-		getHomeworlds(p1, p2, personArray, commonFilms),
-		getVehicles(p1, p2, personArray, commonFilms),
-		getStarships(p1, p2, personArray, commonFilms),
+		getHomeworlds(p1, p2, personArray, commonFilmNames),
+		getVehicles(p1, p2, personArray, commonFilmNames),
+		getStarships(p1, p2, personArray, commonFilmNames),
 	]);
 
-	return [homeworldResults, vehicleResults, starshipResults];
+	return [homeworldResults, vehicleResults, starshipResults, commonFilmResults];
 };

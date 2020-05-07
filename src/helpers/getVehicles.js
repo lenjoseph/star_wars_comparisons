@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getVehicles = async (p1, p2, personArray, commonFilms) => {
+export const getVehicles = async (p1, p2, personArray, commonFilmNames) => {
 	let commonVehicles = personArray[0].vehicles.filter((vehicle) =>
 		personArray[1].vehicles.includes(vehicle)
 	);
@@ -28,17 +28,10 @@ export const getVehicles = async (p1, p2, personArray, commonFilms) => {
 					})
 			)
 		);
-		// resolve the common films array so we can compare titles with films in common vehicles
-		const filmObjs = await Promise.all(
-			commonFilms.map((url) =>
-				axios.get(url).then((res) => {
-					return res.data.title;
-				})
-			)
-		);
+
 		// filter the vehicle array for any vehicle films that were not included in the common films
 		const filteredVehicles = vehicleObjs.map((veh) => {
-			let films = veh.films.filter((film) => filmObjs.includes(film));
+			let films = veh.films.filter((film) => commonFilmNames.includes(film));
 			return {
 				name: veh.name,
 				films: films,

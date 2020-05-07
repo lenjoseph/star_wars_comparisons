@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getHomeworlds = async (p1, p2, personArray, commonFilms) => {
+export const getHomeworlds = async (p1, p2, personArray, commonFilmNames) => {
 	if (personArray[0].homeworld === personArray[1].homeworld) {
 		// obj
 		let homeworld = await axios.get(personArray[0].homeworld);
@@ -20,16 +20,8 @@ export const getHomeworlds = async (p1, p2, personArray, commonFilms) => {
 			)
 		);
 
-		const filmObjs = await Promise.all(
-			commonFilms.map((url) =>
-				axios.get(url).then((res) => {
-					return res.data.title;
-				})
-			)
-		);
-
 		const filteredFilms = homeWorldFilmTitles.filter((film) =>
-			filmObjs.includes(film)
+			commonFilmNames.includes(film)
 		);
 
 		const finalResults = [];

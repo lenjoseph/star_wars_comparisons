@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { css } from 'emotion';
 import { useDispatch, useSelector } from 'react-redux';
 import PersonSelect from './PersonSelect.jsx';
@@ -11,9 +11,10 @@ const AnalysisModule = () => {
 	let people = useSelector((state) => state.people);
 	let personOne = useSelector((state) => state.personOne);
 	let personTwo = useSelector((state) => state.personTwo);
-
 	const dispatch = useDispatch();
-	dispatch(clearResults());
+	useEffect(() => {
+		dispatch(clearResults());
+	}, []);
 	const startComparison = async () => {
 		dispatch(setLoadingTrue());
 		let results = await comparePeople(

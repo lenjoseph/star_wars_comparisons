@@ -18,7 +18,7 @@ const AnalysisModule = () => {
 	}, []);
 	const startComparison = async () => {
 		dispatch(setLoadingTrue());
-		// call helper to perform analysis on api data held in state
+		// call helper to perform analysis on api data in state
 		let results = await comparePeople(
 			personOne.personOne,
 			personTwo.personTwo,

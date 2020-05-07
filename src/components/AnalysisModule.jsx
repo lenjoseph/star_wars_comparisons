@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { css } from 'emotion';
+import { useDispatch, useSelector } from 'react-redux';
 import PersonSelect from './PersonSelect.jsx';
+import { setLoadingTrue, setLoadingFalse } from '../actions/loading';
+import { comparePeople } from '../helpers/comparePeople';
 import '../styles/styles.css';
 
-const SelectModule = () => {
+const AnalysisModule = () => {
+	const [finalResults, updateFinalResults] = useState([]);
+
+	let people = useSelector((state) => state.people);
+	let personOne = useSelector((state) => state.personOne);
+	let personTwo = useSelector((state) => state.personTwo);
+
+	const dispatch = useDispatch();
 	return (
 		<div className={cn.container}>
 			<div className={cn.selectHeader}>
@@ -18,7 +28,17 @@ const SelectModule = () => {
 				</div>
 			</div>
 			<div className={cn.controls}>
-				<button className={cn.runComparison}>Run Comparison</button>
+				<button
+					disabled={!personOne.personOne || !personTwo.personTwo}
+					onClick={() => {
+						dispatch(setLoadingTrue());
+
+						comparePeople(personOne.personOne, personTwo.personTwo, people);
+					}}
+					className={cn.runComparison}
+				>
+					Run Comparison
+				</button>
 			</div>
 		</div>
 	);
@@ -108,4 +128,4 @@ const cn = {
 	`,
 };
 
-export default SelectModule;
+export default AnalysisModule;

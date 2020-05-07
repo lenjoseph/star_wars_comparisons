@@ -7,7 +7,7 @@ import { setLoadingFalse } from '../actions/loading';
 import { css } from 'emotion';
 import Header from './Header.jsx';
 import Loading from './Loading.jsx';
-import SelectModule from './SelectModule.jsx';
+import AnalysisModule from './AnalysisModule.jsx';
 
 const Main = () => {
 	const dispatch = useDispatch();
@@ -17,6 +17,17 @@ const Main = () => {
 		new Promise((resolve, reject) => {
 			getPeople('https://swapi.dev/api/people/', [], resolve, reject);
 		}).then((res) => {
+			console.log(
+				res.map((person) => {
+					return {
+						name: person.name,
+						films: person.films,
+						homeworld: person.homeworld,
+						starships: person.starships,
+						vehicles: person.vehicles,
+					};
+				})
+			);
 			dispatch(
 				setPeople(
 					res.map((person) => {
@@ -38,7 +49,7 @@ const Main = () => {
 			<Header />
 			<SwitchTransition mode="out-in">
 				<CSSTransition key={loading} timeout={400} classNames="fade">
-					<>{loading ? <Loading /> : <SelectModule />}</>
+					<>{loading ? <Loading /> : <AnalysisModule />}</>
 				</CSSTransition>
 			</SwitchTransition>
 		</div>

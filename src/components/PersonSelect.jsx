@@ -25,12 +25,14 @@ const PersonSelect = (order) => {
 			<label className={cn.label}>Select {order.order} Person</label>
 			<select
 				className={cn.select}
-				defaultValue={people[0].name}
 				onChange={(e) => {
 					e.preventDefault();
 					setPerson(e.target.value);
 				}}
 			>
+				<option defaultValue value={'Select Person'}>
+					Select Person
+				</option>
 				{people.map((person, key) => {
 					return (
 						<option key={key} value={person.name}>
@@ -62,6 +64,7 @@ const cn = {
 		align-items: center;
 		width: 90%;
 		height: 80%;
+		padding: 5px;
 		padding-top: 30px;
 		border-radius: 4px;
 		background: #2d3142;

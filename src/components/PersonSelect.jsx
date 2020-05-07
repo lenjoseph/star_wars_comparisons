@@ -80,6 +80,8 @@ const cn = {
 	`,
 	select: css`
 		display: flex;
+		flex-direction: row;
+		justify-content: center;
 		width: 80%;
 		height: 40px;
 		font-family: Ubuntu, sans-serif;
@@ -90,6 +92,8 @@ const cn = {
 		color: #f8f8f8;
 		font-size: 1.1rem;
 		font-family: Ubuntu, sans-serif;
+		padding: 10px;
+		text-align: center;
 	`,
 };
 

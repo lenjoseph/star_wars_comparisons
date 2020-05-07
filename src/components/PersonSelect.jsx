@@ -33,6 +33,7 @@ const PersonSelect = (order) => {
 				<option defaultValue value={'Select Person'}>
 					Select Person
 				</option>
+				{/* generate options from api data stored in redux */}
 				{people.map((person, key) => {
 					return (
 						<option key={key} value={person.name}>

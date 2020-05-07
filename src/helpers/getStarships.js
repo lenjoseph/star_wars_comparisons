@@ -24,6 +24,7 @@ export const getStarships = async (p1, p2, personArray, commonFilmNames) => {
 								})
 							)
 						);
+						// return final shape of map to array
 						return {
 							name: res.data.name,
 							films: films,
@@ -32,6 +33,7 @@ export const getStarships = async (p1, p2, personArray, commonFilmNames) => {
 			)
 		);
 
+		// filter the movies for each starship that are not shared across the two people
 		const filteredStarships = starshipObjs.map((ss) => {
 			let films = ss.films.filter((film) => commonFilmNames.includes(film));
 			return { name: ss.name, films: films };

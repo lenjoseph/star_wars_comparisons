@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { css } from 'emotion';
 import '../styles/styles.css';
-import { hideResults, clearResults } from '../actions/results';
+import { hideResults } from '../actions/results';
 import { setLoadingTrue, setLoadingFalse } from '../actions/loading';
 
 const Results = () => {
 	const dispatch = useDispatch();
 	const results = useSelector((state) => state.results);
-	const p1 = useSelector((state) => state.personOne.personOne);
-	const p2 = useSelector((state) => state.personTwo.personTwo);
 	const exitResults = () => {
 		dispatch(hideResults());
 		// artifical loading sequence to avoid UI jolt

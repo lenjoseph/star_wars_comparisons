@@ -5,6 +5,7 @@ export const getPeople = (currentURL, people, resolve, reject) => {
 		.get(currentURL)
 		.then((res) => {
 			const newPeople = people.concat(res.data.results);
+			// if data.next is in object, rerun with new URL, else resolve the promise with concatenated data
 			res.data.next === null
 				? resolve(newPeople)
 				: getPeople(res.data.next, newPeople, resolve, reject);

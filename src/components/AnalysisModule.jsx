@@ -13,15 +13,18 @@ const AnalysisModule = () => {
 	let personTwo = useSelector((state) => state.personTwo);
 	const dispatch = useDispatch();
 	useEffect(() => {
+		// clearing out results from previous analysis stored in state
 		dispatch(clearResults());
 	}, []);
 	const startComparison = async () => {
 		dispatch(setLoadingTrue());
+		// call helper to perform analysis on api data held in state
 		let results = await comparePeople(
 			personOne.personOne,
 			personTwo.personTwo,
 			people
 		);
+		// assemble final results from promises
 		let finalResults =
 			typeof results === String ? results : [].concat.apply([], results);
 		// data is ready before settimeout finished, but the delay makes the transition more engaging

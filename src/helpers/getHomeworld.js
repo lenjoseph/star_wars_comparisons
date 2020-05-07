@@ -11,7 +11,6 @@ export const getHomeworlds = async (p1, p2, personArray, commonFilmNames) => {
 		let homeworldFilms = homeworld.data.films;
 
 		// hydrate film urls array
-
 		const homeWorldFilmTitles = await Promise.all(
 			homeworldFilms.map((url) =>
 				axios.get(url).then((res) => {

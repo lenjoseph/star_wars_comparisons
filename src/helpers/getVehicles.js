@@ -21,6 +21,7 @@ export const getVehicles = async (p1, p2, personArray, commonFilmNames) => {
 								})
 							)
 						);
+						// return final mapped shape to the array
 						return {
 							name: res.data.name,
 							films: films,

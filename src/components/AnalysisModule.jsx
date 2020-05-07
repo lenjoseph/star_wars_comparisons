@@ -3,7 +3,7 @@ import { css } from 'emotion';
 import { useDispatch, useSelector } from 'react-redux';
 import PersonSelect from './PersonSelect.jsx';
 import { setLoadingTrue, setLoadingFalse } from '../actions/loading';
-import { updateResults, showResults } from '../actions/results';
+import { updateResults, showResults, clearResults } from '../actions/results';
 import { comparePeople } from '../helpers/comparePeople';
 import '../styles/styles.css';
 
@@ -13,7 +13,7 @@ const AnalysisModule = () => {
 	let personTwo = useSelector((state) => state.personTwo);
 
 	const dispatch = useDispatch();
-
+	dispatch(clearResults());
 	const startComparison = async () => {
 		dispatch(setLoadingTrue());
 		let results = await comparePeople(
@@ -31,6 +31,14 @@ const AnalysisModule = () => {
 		}, 2000);
 	};
 
+	const isDisabled = () => {
+		return (
+			!personOne.personOne ||
+			!personTwo.personTwo ||
+			personOne.personOne === 'Select Person' ||
+			personTwo.personTwo === 'Select Person'
+		);
+	};
 	return (
 		<>
 			<div className={cn.container}>
@@ -47,7 +55,7 @@ const AnalysisModule = () => {
 				</div>
 				<div className={cn.controls}>
 					<button
-						disabled={!personOne.personOne || !personTwo.personTwo}
+						disabled={isDisabled()}
 						onClick={() => {
 							startComparison();
 						}}

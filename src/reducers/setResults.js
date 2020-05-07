@@ -3,7 +3,7 @@ export const updateResults = (state = [], action) => {
 		case 'UPDATE_RESULTS':
 			return state.concat(action.payload);
 		case 'CLEAR_RESULTS':
-			return state.splice(0, state.length);
+			return [];
 		default:
 			return state;
 	}

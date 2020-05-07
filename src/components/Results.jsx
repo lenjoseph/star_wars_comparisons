@@ -11,7 +11,6 @@ const Results = () => {
 	const p2 = useSelector((state) => state.personTwo.personTwo);
 	const exitResults = () => {
 		dispatch(hideResults());
-		dispatch(clearResults());
 	};
 	return (
 		<div className={cn.container}>

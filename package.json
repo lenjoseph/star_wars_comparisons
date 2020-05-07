@@ -4,9 +4,8 @@
 	"description": "react app to compare star wars characters and identify whether they have lived and/or been seen together",
 	"main": "index.js",
 	"scripts": {
-		"start": "webpack --mode development",
+		"start": "webpack-dev-server",
 		"build": "webpack --mode production",
-		"dev-server": "webpack-dev-server",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {

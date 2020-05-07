@@ -14,6 +14,21 @@ const AnalysisModule = () => {
 	let personTwo = useSelector((state) => state.personTwo);
 
 	const dispatch = useDispatch();
+
+	const startComparison = async () => {
+		dispatch(setLoadingTrue());
+		let results = await comparePeople(
+			personOne.personOne,
+			personTwo.personTwo,
+			people
+		);
+		let concatenatedResults = [].concat.apply([], results);
+		console.log(concatenatedResults);
+		setTimeout(() => {
+			dispatch(setLoadingFalse());
+		}, 2000);
+	};
+
 	return (
 		<div className={cn.container}>
 			<div className={cn.selectHeader}>
@@ -31,9 +46,7 @@ const AnalysisModule = () => {
 				<button
 					disabled={!personOne.personOne || !personTwo.personTwo}
 					onClick={() => {
-						dispatch(setLoadingTrue());
-
-						comparePeople(personOne.personOne, personTwo.personTwo, people);
+						startComparison();
 					}}
 					className={cn.runComparison}
 				>

@@ -50,5 +50,5 @@ export const comparePeople = async (p1, p2, people) => {
 		getStarships(p1, p2, personArray, commonFilms),
 	]);
 
-	console.log(homeworldResults, vehicleResults, starshipResults);
+	return [homeworldResults, vehicleResults, starshipResults];
 };

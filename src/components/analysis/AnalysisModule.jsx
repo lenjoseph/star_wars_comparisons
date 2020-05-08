@@ -46,7 +46,8 @@ const AnalysisModule = () => {
 			!personOne.personOne ||
 			!personTwo.personTwo ||
 			personOne.personOne === "Select Person" ||
-			personTwo.personTwo === "Select Person"
+			personTwo.personTwo === "Select Person" ||
+			personOne.personOne === personTwo.personTwo
 		);
 	};
 	return (

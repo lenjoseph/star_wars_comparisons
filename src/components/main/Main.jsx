@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SwitchTransition, CSSTransition } from "react-transition-group";
-import { getPeople } from "../../helpers/getPeople";
+import { getPeople } from "../../analysis/helpers/getPeople";
 import { setPeople } from "../../actions/analysis/people";
 import { setLoadingFalse } from "../../actions/main/loading";
 import { css } from "emotion";

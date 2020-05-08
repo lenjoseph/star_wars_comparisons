@@ -1,6 +1,6 @@
-import { getHomeworlds } from "./getHomeworld.js";
-import { getVehicles } from "./getVehicles.js";
-import { getStarships } from "./getStarships.js";
+import { getHomeworlds } from "./helpers/getHomeworld.js";
+import { getVehicles } from "./helpers/getVehicles.js";
+import { getStarships } from "./helpers/getStarships.js";
 import axios from "axios";
 
 export const comparePeople = async (p1, p2, people) => {

@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react';
-import { css } from 'emotion';
-import { useDispatch, useSelector } from 'react-redux';
-import PersonSelect from './PersonSelect.jsx';
-import { setLoadingTrue, setLoadingFalse } from '../../actions/main/loading';
+import React, { useEffect } from "react";
+import { css } from "emotion";
+import { useDispatch, useSelector } from "react-redux";
+import PersonSelect from "./PersonSelect.jsx";
+import { setLoadingTrue, setLoadingFalse } from "../../actions/main/loading";
 import {
 	updateResults,
 	showResults,
 	clearResults,
-} from '../../actions/results/results';
-import { comparePeople } from '../../helpers/comparePeople';
-import '../../styles/styles.css';
-import { resetSelections } from '../../actions/analysis/person.js';
+} from "../../actions/results/results";
+import { comparePeople } from "../../analysis";
+import "../../styles/styles.css";
+import { resetSelections } from "../../actions/analysis/person.js";
 
 const AnalysisModule = () => {
 	let people = useSelector((state) => state.people);
@@ -45,22 +45,24 @@ const AnalysisModule = () => {
 		return (
 			!personOne.personOne ||
 			!personTwo.personTwo ||
-			personOne.personOne === 'Select Person' ||
-			personTwo.personTwo === 'Select Person'
+			personOne.personOne === "Select Person" ||
+			personTwo.personTwo === "Select Person"
 		);
 	};
 	return (
 		<>
 			<div className={cn.container}>
 				<div className={cn.selectHeader}>
-					<p className={cn.headerText}>Select two people to compare</p>
+					<p className={cn.headerText}>
+						Select two people to compare
+					</p>
 				</div>
 				<div className={cn.selectGroup}>
 					<div className={cn.selectSide}>
-						<PersonSelect order={'First'} />
+						<PersonSelect order={"First"} />
 					</div>
 					<div className={cn.selectSide}>
-						<PersonSelect order={'Second'} />
+						<PersonSelect order={"Second"} />
 					</div>
 				</div>
 				<div className={cn.controls}>

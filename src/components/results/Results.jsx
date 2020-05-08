@@ -54,7 +54,7 @@ const cn = {
 		height: 80%;
 		min-height: 450px;
 		max-height: 500px;
-		perspective: 500px;
+		perspective: 300px;
 		width: 70%;
 		background: linear-gradient(#1a1e28, #2d3142);
 		border-radius: 8px;

@@ -73,7 +73,7 @@ export const comparePeople = async (p1, p2, people) => {
 			!starshipResults.length
 		) {
 			commonFilmResults.push(
-				`${p1} and ${p2} were never seen together, but were both in ${name}`
+				`${p1} and ${p2} were never seen together on a planet, vehicle, or starship, but were both in ${name}`
 			);
 		}
 	});

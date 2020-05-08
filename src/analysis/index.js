@@ -51,12 +51,6 @@ export const comparePeople = async (p1, p2, people) => {
 		return JSON.stringify({ error: err });
 	});
 
-	const commonFilmResults = [];
-
-	commonFilmNames.forEach((name) => {
-		commonFilmResults.push(`${p1} and ${p2} were seen together in ${name}`);
-	});
-
 	// perform analysis on each category for two people
 	const [
 		homeworldResults,
@@ -70,6 +64,19 @@ export const comparePeople = async (p1, p2, people) => {
 		return JSON.stringify({ error: err });
 	});
 
+	const commonFilmResults = [];
+
+	commonFilmNames.forEach((name) => {
+		if (
+			!homeworldResults.length &&
+			!vehicleResults.length &&
+			!starshipResults.length
+		) {
+			commonFilmResults.push(
+				`${p1} and ${p2} were never seen together, but were both in ${name}`
+			);
+		}
+	});
 	// return resolved promises to caller
 	return [
 		homeworldResults,

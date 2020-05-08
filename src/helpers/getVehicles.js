@@ -1,4 +1,5 @@
 import axios from "axios";
+import { doesWordStartWithVowel } from "./vowelCheck";
 
 export const getVehicles = async (p1, p2, personArray, commonFilmNames) => {
 	let commonVehicles = personArray[0].vehicles.filter((vehicle) =>
@@ -42,12 +43,17 @@ export const getVehicles = async (p1, p2, personArray, commonFilmNames) => {
 				films: films,
 			};
 		});
+
 		const finalResults = [];
 		// hydrate final results with list of mutual vehicles within movies
 		for (let i = 0; i < filteredVehicles.length; i++) {
 			for (let j = 0; j < filteredVehicles[i].films.length; j++) {
 				finalResults.push(
-					`${p1} and ${p2} both traveled on a ${filteredVehicles[i].name} in ${filteredVehicles[i].films[j]}`
+					`${p1} and ${p2} both traveled on ${doesWordStartWithVowel(
+						filteredVehicles[i].name
+					)} ${filteredVehicles[i].name} in ${
+						filteredVehicles[i].films[j]
+					}`
 				);
 			}
 		}

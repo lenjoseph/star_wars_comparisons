@@ -22,6 +22,7 @@ const Main = () => {
 			getPeople("https://swapi.dev/api/people/", [], resolve, reject);
 		})
 			.then((res) => {
+				console.log(res);
 				dispatch(
 					setPeople(
 						res.map((person) => {

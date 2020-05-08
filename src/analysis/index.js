@@ -76,9 +76,31 @@ export const comparePeople = async (p1, p2, people) => {
 		commonFilmResults.push(
 			`${p1} and ${p2} were never seen together on a planet, vehicle, or starship, but were both in ${commonFilmNames.map(
 				(name, i) => {
-					return commonFilmNameLength === i + 1
-						? ` and ${name}`
-						: ` ${name}`;
+					// only one item in array
+					if (commonFilmNameLength === 1) {
+						return `${name}`;
+						// first of two items
+					} else if (
+						commonFilmNameLength === 2 &&
+						commonFilmNameLength !== i + 1
+					) {
+						return `${name} and`;
+						// last of two items
+					} else if (
+						commonFilmNameLength === 2 &&
+						commonFilmNameLength === i + 1
+					) {
+						return ` ${name}`;
+						// n of items > 2
+					} else if (
+						commonFilmNameLength > 2 &&
+						commonFilmNameLength !== i + 1
+					) {
+						return ` ${name}`;
+						// last of items > 2
+					} else {
+						return ` and ${name}`;
+					}
 				}
 			)}`
 		);

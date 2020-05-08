@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const getStarships = async (p1, p2, personArray, commonFilmNames) => {
 	// isolate common starships
@@ -30,12 +30,17 @@ export const getStarships = async (p1, p2, personArray, commonFilmNames) => {
 							films: films,
 						};
 					})
+					.catch((err) => {
+						return JSON.stringify({ error: err });
+					})
 			)
 		);
 
 		// filter the movies for each starship that are not shared across the two people
 		const filteredStarships = starshipObjs.map((ss) => {
-			let films = ss.films.filter((film) => commonFilmNames.includes(film));
+			let films = ss.films.filter((film) =>
+				commonFilmNames.includes(film)
+			);
 			return { name: ss.name, films: films };
 		});
 

@@ -1,7 +1,7 @@
-import { getHomeworlds } from './getHomeworld.js';
-import { getVehicles } from './getVehicles.js';
-import { getStarships } from './getStarships.js';
-import axios from 'axios';
+import { getHomeworlds } from "./getHomeworld.js";
+import { getVehicles } from "./getVehicles.js";
+import { getStarships } from "./getStarships.js";
+import axios from "axios";
 
 export const comparePeople = async (p1, p2, people) => {
 	// get objects associated with names
@@ -47,7 +47,9 @@ export const comparePeople = async (p1, p2, people) => {
 				return res.data.title;
 			})
 		)
-	);
+	).catch((err) => {
+		return JSON.stringify({ error: err });
+	});
 
 	const commonFilmResults = [];
 
@@ -62,7 +64,14 @@ export const comparePeople = async (p1, p2, people) => {
 		getHomeworlds(p1, p2, personArray, commonFilmNames),
 		getVehicles(p1, p2, personArray, commonFilmNames),
 		getStarships(p1, p2, personArray, commonFilmNames),
-	]);
+	]).catch((err) => {
+		return JSON.stringify({ error: err });
+	});
 
-	return [homeworldResults, vehicleResults, starshipResults, commonFilmResults];
+	return [
+		homeworldResults,
+		vehicleResults,
+		starshipResults,
+		commonFilmResults,
+	];
 };

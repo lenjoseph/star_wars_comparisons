@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const getVehicles = async (p1, p2, personArray, commonFilmNames) => {
 	let commonVehicles = personArray[0].vehicles.filter((vehicle) =>
@@ -28,11 +28,15 @@ export const getVehicles = async (p1, p2, personArray, commonFilmNames) => {
 						};
 					})
 			)
-		);
+		).catch((err) => {
+			return JSON.stringify({ error: err });
+		});
 
 		// filter the vehicle array for any vehicle films that were not included in the common films
 		const filteredVehicles = vehicleObjs.map((veh) => {
-			let films = veh.films.filter((film) => commonFilmNames.includes(film));
+			let films = veh.films.filter((film) =>
+				commonFilmNames.includes(film)
+			);
 			return {
 				name: veh.name,
 				films: films,

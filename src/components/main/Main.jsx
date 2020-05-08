@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { SwitchTransition, CSSTransition } from 'react-transition-group';
-import { getPeople } from '../../helpers/getPeople';
-import { setPeople } from '../../actions/analysis/people';
-import { setLoadingFalse } from '../../actions/main/loading';
-import { css } from 'emotion';
-import Header from './Header.jsx';
-import Loading from './Loading.jsx';
-import AnalysisModule from '../analysis/AnalysisModule.jsx';
-import Results from '../results/Results.jsx';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { SwitchTransition, CSSTransition } from "react-transition-group";
+import { getPeople } from "../../helpers/getPeople";
+import { setPeople } from "../../actions/analysis/people";
+import { setLoadingFalse } from "../../actions/main/loading";
+import { css } from "emotion";
+import Header from "./Header.jsx";
+import Loading from "./Loading.jsx";
+import AnalysisModule from "../analysis/AnalysisModule.jsx";
+import Results from "../results/Results.jsx";
 
 const Main = () => {
 	const dispatch = useDispatch();
@@ -19,23 +19,27 @@ const Main = () => {
 	);
 	useEffect(() => {
 		new Promise((resolve, reject) => {
-			getPeople('https://swapi.dev/api/people/', [], resolve, reject);
-		}).then((res) => {
-			dispatch(
-				setPeople(
-					res.map((person) => {
-						return {
-							name: person.name,
-							films: person.films,
-							homeworld: person.homeworld,
-							starships: person.starships,
-							vehicles: person.vehicles,
-						};
-					})
-				)
-			);
-			dispatch(setLoadingFalse());
-		});
+			getPeople("https://swapi.dev/api/people/", [], resolve, reject);
+		})
+			.then((res) => {
+				dispatch(
+					setPeople(
+						res.map((person) => {
+							return {
+								name: person.name,
+								films: person.films,
+								homeworld: person.homeworld,
+								starships: person.starships,
+								vehicles: person.vehicles,
+							};
+						})
+					)
+				);
+				dispatch(setLoadingFalse());
+			})
+			.catch((err) => {
+				return JSON.stringify({ error: err });
+			});
 	}, []);
 	return (
 		<div className={cn.container}>

@@ -4,6 +4,7 @@ import { css } from "emotion";
 import "../../styles/styles.css";
 import { hideResults } from "../../actions/results/results";
 import { setLoadingTrue, setLoadingFalse } from "../../actions/main/loading";
+import Stars from "./Stars.jsx";
 
 const Results = () => {
 	const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const Results = () => {
 	};
 	return (
 		<div className={cn.container}>
+			<Stars />
 			<div
 				style={{
 					animation: "slide 200s linear",
@@ -52,10 +54,10 @@ const cn = {
 		align-items: flex-start;
 		justify-content: center;
 		height: 80%;
+		width: 70%;
 		min-height: 450px;
 		max-height: 500px;
 		perspective: 300px;
-		width: 70%;
 		background: linear-gradient(#1a1e28, #2d3142);
 		border-radius: 8px;
 		box-shadow: 0px 0px 14px #f8f8f8;

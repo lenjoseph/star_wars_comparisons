@@ -12,3 +12,4 @@ react app to compare star wars characters and identify whether they have lived a
 2. The repo needs test coverage
 3. The repo needs better error handling for failed promises
 4. The repo would benefit from more comments in certain areas
+5. Integrate GQL interface for specifying query schemas

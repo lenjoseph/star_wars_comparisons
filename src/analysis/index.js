@@ -66,6 +66,7 @@ export const comparePeople = async (p1, p2, people) => {
 
 	const commonFilmResults = [];
 
+	// if there are no common vehicles, starships, or homelands, but there are common films, list the films
 	if (
 		!homeworldResults.length &&
 		!vehicleResults.length &&

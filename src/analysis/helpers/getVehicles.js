@@ -45,7 +45,8 @@ export const getVehicles = async (p1, p2, personArray, commonFilmNames) => {
 		});
 
 		const finalResults = [];
-		// hydrate final results with list of mutual vehicles within movies
+
+		// hydrate final results array before returning to caller
 		for (let i = 0; i < filteredVehicles.length; i++) {
 			for (let j = 0; j < filteredVehicles[i].films.length; j++) {
 				finalResults.push(

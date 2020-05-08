@@ -66,17 +66,23 @@ export const comparePeople = async (p1, p2, people) => {
 
 	const commonFilmResults = [];
 
-	commonFilmNames.forEach((name) => {
-		if (
-			!homeworldResults.length &&
-			!vehicleResults.length &&
-			!starshipResults.length
-		) {
-			commonFilmResults.push(
-				`${p1} and ${p2} were never seen together on a planet, vehicle, or starship, but were both in ${name}`
-			);
-		}
-	});
+	if (
+		!homeworldResults.length &&
+		!vehicleResults.length &&
+		!starshipResults.length
+	) {
+		let commonFilmNameLength = commonFilmNames.length;
+		commonFilmResults.push(
+			`${p1} and ${p2} were never seen together on a planet, vehicle, or starship, but were both in ${commonFilmNames.map(
+				(name, i) => {
+					return commonFilmNameLength === i + 1
+						? ` and ${name}`
+						: ` ${name}`;
+				}
+			)}`
+		);
+	}
+
 	// return resolved promises to caller
 	return [
 		homeworldResults,

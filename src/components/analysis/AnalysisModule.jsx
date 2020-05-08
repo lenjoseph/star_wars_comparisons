@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { css } from "emotion";
 import { useDispatch, useSelector } from "react-redux";
 import PersonSelect from "./PersonSelect.jsx";
@@ -25,14 +25,13 @@ const AnalysisModule = () => {
 	const startComparison = async () => {
 		dispatch(setLoadingTrue());
 		// call helper to perform analysis on api data in state
-		let results = await comparePeople(
+		const results = await comparePeople(
 			personOne.personOne,
 			personTwo.personTwo,
 			people
 		);
 		// assemble final results from promises
-		let finalResults =
-			typeof results === String ? results : [].concat.apply([], results);
+		const finalResults = [].concat.apply([], results);
 		// data is ready before settimeout finished, but the delay makes the transition more engaging
 		setTimeout(() => {
 			dispatch(setLoadingFalse());
@@ -100,11 +99,16 @@ const cn = {
 	`,
 	controls: css`
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 		height: 20%;
 		width: 100%;
+	`,
+	feedback: css`
+		font-family: Ubuntu, sans-serif;
+		font-size: 1.1rem;
+		color: #2d3142;
 	`,
 	headerText: css`
 		font-family: Ubuntu, sans-serif;
@@ -125,7 +129,7 @@ const cn = {
 		color: white;
 		font-family: ubuntu, sans-serif;
 		font-size: 1.2rem;
-		box-shadow: 0px 0px 3px #2e7d32;
+		box-shadow: 0px 0px 6px #2e7d32;
 		&:active {
 			box-shadow: inset 0px 0px 4px black;
 			outline: none;

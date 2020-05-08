@@ -2,7 +2,6 @@ import axios from "axios";
 
 export const getStarships = async (p1, p2, personArray, commonFilmNames) => {
 	// isolate common starships
-
 	const commonStarships = personArray[0].starships.filter((starship) => {
 		return personArray[1].starships.includes(starship);
 	});
@@ -13,9 +12,9 @@ export const getStarships = async (p1, p2, personArray, commonFilmNames) => {
 			commonStarships.map((url) =>
 				axios
 					.get(url)
-					// res is a vehicle object
+					// res is a starship object
 					.then(async (res) => {
-						// resolving film objects for film url in each vehicle
+						// resolving film objects for film url in each starship
 						const films = await Promise.all(
 							res.data.films.map(async (url) =>
 								axios.get(url).then((res) => {
@@ -46,6 +45,7 @@ export const getStarships = async (p1, p2, personArray, commonFilmNames) => {
 
 		const finalResults = [];
 
+		// hydrate final results array before returning to caller
 		for (let i = 0; i < filteredStarships.length; i++) {
 			for (let j = 0; j < filteredStarships[i].films.length; j++) {
 				finalResults.push(

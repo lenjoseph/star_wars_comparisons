@@ -88,7 +88,7 @@ body {
 	}
 	100% {
 		top: -3500px;
-		transform: rotateX(40deg) translateZ(-3000px);
+		transform: rotateX(70deg) translateZ(-4000px);
 	}
 }
 

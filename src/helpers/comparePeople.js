@@ -56,6 +56,8 @@ export const comparePeople = async (p1, p2, people) => {
 	commonFilmNames.forEach((name) => {
 		commonFilmResults.push(`${p1} and ${p2} were seen together in ${name}`);
 	});
+
+	// perform analysis on each category for two people
 	const [
 		homeworldResults,
 		vehicleResults,
@@ -68,6 +70,7 @@ export const comparePeople = async (p1, p2, people) => {
 		return JSON.stringify({ error: err });
 	});
 
+	// return resolved promises to caller
 	return [
 		homeworldResults,
 		vehicleResults,

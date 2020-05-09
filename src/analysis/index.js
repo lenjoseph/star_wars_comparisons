@@ -102,7 +102,7 @@ export const comparePeople = async (p1, p2, people) => {
 						return ` and ${name}`;
 					}
 				}
-			)}`
+			)}.`
 		);
 	}
 

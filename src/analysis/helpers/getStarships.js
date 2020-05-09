@@ -58,7 +58,7 @@ export const getStarships = async (p1, p2, personArray, commonFilmNames) => {
 		for (let i = 0; i < filteredStarships.length; i++) {
 			for (let j = 0; j < filteredStarships[i].films.length; j++) {
 				finalResults.push(
-					`${p1} and ${p2} both traveled in the ${filteredStarships[i].name} in ${filteredStarships[i].films[j]}`
+					`${p1} and ${p2} both traveled in the ${filteredStarships[i].name} in ${filteredStarships[i].films[j]}.`
 				);
 			}
 		}

@@ -84,13 +84,18 @@ body {
 @keyframes slide {
 	0% {
 		top: 500px;
-		transform: rotateX(20deg) translateZ(0px);
+		transform: rotateX(55deg) translateZ(0px);
+		opacity: 1;
+	}
+
+	70% {
+		opacity: .7;
 	}
 
 	100% {
-
-		top: -3500px;
-		transform: rotateX(20deg) translateZ(-1600px);
+		opacity: 0;
+		top: -2000px;
+		transform: rotateX(55deg) translateZ(-2000px);
 	}
 }
 

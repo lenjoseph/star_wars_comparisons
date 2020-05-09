@@ -35,7 +35,7 @@ export const getHomeworlds = async (p1, p2, personArray, commonFilmNames) => {
 		if (filteredFilms.length) {
 			for (let i = 0; i < filteredFilms.length; i++) {
 				finalResults.push(
-					`${p1} and ${p2} were seen together on the planet ${homeworldName} in ${filteredFilms[i]}`
+					`${p1} and ${p2} were seen together on the planet ${homeworldName} in ${filteredFilms[i]}.`
 				);
 			}
 		}

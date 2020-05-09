@@ -3,7 +3,7 @@ import "../../styles/styles.css";
 
 const generateStars = () => {
 	let stars = [...Array.from({ length: 50 }, (v, k) => k + 1)].map((elem) => {
-		let heightandWidth = Math.floor(Math.random() * 3);
+		let heightandWidth = Math.random() * 3;
 		return {
 			key: elem,
 			position: `absolute`,

@@ -61,7 +61,7 @@ export const getVehicles = async (p1, p2, personArray, commonFilmNames) => {
 						filteredVehicles[i].name
 					)} ${filteredVehicles[i].name} in ${
 						filteredVehicles[i].films[j]
-					}`
+					}.`
 				);
 			}
 		}

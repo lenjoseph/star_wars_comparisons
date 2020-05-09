@@ -11,7 +11,7 @@ export const getPeople = (currentURL, people, resolve, reject) => {
 				: getPeople(res.data.next, newPeople, resolve, reject);
 		})
 		.catch((err) => {
-			console.log(`error: ${err}`);
+			console.log(JSON.stringify({ error: err }));
 			reject("Something bad happened. Please refresh the page.");
 		});
 };

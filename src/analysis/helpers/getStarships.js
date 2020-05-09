@@ -17,10 +17,19 @@ export const getStarships = async (p1, p2, personArray, commonFilmNames) => {
 						// resolving film objects for film url in each starship
 						const films = await Promise.all(
 							res.data.films.map(async (url) =>
-								axios.get(url).then((res) => {
-									// return just title of film
-									return res.data.title;
-								})
+								axios
+									.get(url)
+									.then((res) => {
+										// return just title of film
+										return res.data.title;
+									})
+									.catch((err) => {
+										console.log(
+											JSON.stringify({
+												error: err,
+											})
+										);
+									})
 							)
 						);
 						// return final shape of map to array
@@ -30,7 +39,7 @@ export const getStarships = async (p1, p2, personArray, commonFilmNames) => {
 						};
 					})
 					.catch((err) => {
-						return JSON.stringify({ error: err });
+						console.log(JSON.stringify({ error: err }));
 					})
 			)
 		);

@@ -6,7 +6,7 @@ export const getHomeworlds = async (p1, p2, personArray, commonFilmNames) => {
 		let homeworld = await axios
 			.get(personArray[0].homeworld)
 			.catch((err) => {
-				return JSON.stringify({ error: err });
+				console.log(JSON.stringify({ error: err }));
 			});
 
 		// string value
@@ -23,7 +23,7 @@ export const getHomeworlds = async (p1, p2, personArray, commonFilmNames) => {
 				})
 			)
 		).catch((err) => {
-			return JSON.stringify({ error: err });
+			console.log(JSON.stringify({ error: err }));
 		});
 
 		const filteredFilms = homeWorldFilmTitles.filter((film) =>

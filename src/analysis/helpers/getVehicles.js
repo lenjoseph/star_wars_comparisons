@@ -16,10 +16,17 @@ export const getVehicles = async (p1, p2, personArray, commonFilmNames) => {
 						// resolving film objects for film url in each vehicle
 						const films = await Promise.all(
 							res.data.films.map(async (url) =>
-								axios.get(url).then((res) => {
-									// return just title of film
-									return res.data.title;
-								})
+								axios
+									.get(url)
+									.then((res) => {
+										// return just title of film
+										return res.data.title;
+									})
+									.catch((err) => {
+										console.log(
+											JSON.stringify({ error: err })
+										);
+									})
 							)
 						);
 						// return final mapped shape to the array
@@ -30,7 +37,7 @@ export const getVehicles = async (p1, p2, personArray, commonFilmNames) => {
 					})
 			)
 		).catch((err) => {
-			return JSON.stringify({ error: err });
+			console.log(JSON.stringify({ error: err }));
 		});
 
 		// filter the vehicle array for any vehicle films that were not included in the common films

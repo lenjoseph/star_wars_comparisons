@@ -38,7 +38,7 @@ const Main = () => {
 				dispatch(setLoadingFalse());
 			})
 			.catch((err) => {
-				return JSON.stringify({ error: err });
+				console.log(JSON.stringify({ error: err }));
 			});
 	}, []);
 	return (

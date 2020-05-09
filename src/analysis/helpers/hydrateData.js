@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const hydrateData = async (commonArray) => {
 	const data = await Promise.all(
-		// commonArray is an array of shared vehicles or starships
+		// commonArray is an array of shared vehicle or starship URLs
 		commonArray.map((url) =>
 			axios
 				.get(url)
@@ -28,10 +28,11 @@ export const hydrateData = async (commonArray) => {
 						films: films,
 					};
 				})
+				.catch((err) => {
+					console.log(JSON.stringify({ error: err }));
+				})
 		)
-	).catch((err) => {
-		return JSON.stringify({ error: err });
-	});
+	);
 	// return final array to caller
 	return data;
 };

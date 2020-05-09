@@ -95,7 +95,7 @@ const cn = {
 		border-radius: 8px;
 		margin-top: 40px;
 		padding: 10px;
-		transition: all 0.5s;
+		transition: all 0.3s;
 	`,
 	controls: css`
 		display: flex;

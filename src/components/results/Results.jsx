@@ -22,7 +22,7 @@ const Results = () => {
 			<Stars />
 			<div
 				style={{
-					animation: "slide 200s linear",
+					animation: "slide 240s linear",
 					animationIterationCount: "infinite",
 				}}
 				className={cn.slideText}
@@ -57,8 +57,8 @@ const cn = {
 		width: 70%;
 		min-height: 450px;
 		max-height: 500px;
-		perspective: 300px;
-		background: linear-gradient(#1a1e28, #2d3142);
+		perspective: 50px;
+		background: #212121;
 		border-radius: 8px;
 		box-shadow: 0px 0px 14px #f8f8f8;
 		margin-top: 40px;
@@ -101,13 +101,13 @@ const cn = {
 	`,
 	slideText: css`
 		text-align: center;
-		position: relative;
+		position: absolute;
 		width: 100%;
-		transform-origin: 50% 100%;
+		transform-origin: 50% 50%;
 		background: transparent;
-		color: #f8f8f8;
+		color: #f0c808;
 		font-family: Ubuntu, sans-serif;
-		font-size: 2rem;
+		font-size: 2.5rem;
 		transition: all 0.5s;
 	`,
 };

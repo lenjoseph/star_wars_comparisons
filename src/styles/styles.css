@@ -4,7 +4,7 @@ grey: #bfc0c0;
 white: #ffffff;
 orange: #ef8354; */
 
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Girassol&family=Ubuntu&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Ubuntu&display=swap');
 
 body {
 	margin: 0;
@@ -84,11 +84,13 @@ body {
 @keyframes slide {
 	0% {
 		top: 500px;
-		transform: rotateX(15deg) translateZ(0);
+		transform: rotateX(20deg) translateZ(0px);
 	}
+
 	100% {
+
 		top: -3500px;
-		transform: rotateX(70deg) translateZ(-4000px);
+		transform: rotateX(20deg) translateZ(-1600px);
 	}
 }
 
@@ -96,9 +98,11 @@ body {
 	0% {
 		opacity: 0.1;
 	}
+
 	50% {
 		opacity: 1;
 	}
+
 	100% {
 		opacity: 0.1;
 	}

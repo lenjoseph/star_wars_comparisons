@@ -48,7 +48,7 @@ export const comparePeople = async (p1, p2, people) => {
 			})
 		)
 	).catch((err) => {
-		return JSON.stringify({ error: err });
+		console.log(JSON.stringify({ error: err }));
 	});
 
 	// perform analysis on each category for two people
@@ -61,7 +61,7 @@ export const comparePeople = async (p1, p2, people) => {
 		getVehicles(p1, p2, personArray, commonFilmNames),
 		getStarships(p1, p2, personArray, commonFilmNames),
 	]).catch((err) => {
-		return JSON.stringify({ error: err });
+		console.log(JSON.stringify({ error: err }));
 	});
 
 	const commonFilmResults = [];

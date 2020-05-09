@@ -1,6 +1,7 @@
-import { getHomeworlds } from "./helpers/getHomeworld.js";
-import { getVehicles } from "./helpers/getVehicles.js";
-import { getStarships } from "./helpers/getStarships.js";
+import { getHomeworlds } from "./services/getHomeworld.js";
+import { getVehicles } from "./services/getVehicles.js";
+import { getStarships } from "./services/getStarships.js";
+import { getCommonFilms } from "./services/getCommonFilms";
 import axios from "axios";
 
 export const comparePeople = async (p1, p2, people) => {
@@ -18,22 +19,7 @@ export const comparePeople = async (p1, p2, people) => {
 	);
 
 	// determine overlap in films
-	const commonFilms = [];
-	if (personArray[0].films.length && personArray[1].films.length) {
-		if (personArray[0].length < personArray[1].length) {
-			personArray[0].films.forEach((film) => {
-				if (personArray[1].films.includes(film)) {
-					commonFilms.push(film);
-				}
-			});
-		} else {
-			personArray[1].films.forEach((film) => {
-				if (personArray[0].films.includes(film)) {
-					commonFilms.push(film);
-				}
-			});
-		}
-	}
+	const commonFilms = getCommonFilms(personArray);
 
 	//    break analysis if characters were never in the same film
 	if (!commonFilms.length) {

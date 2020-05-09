@@ -1,4 +1,4 @@
-import { hydrateData } from "./hydrateData";
+import { hydrateData } from "../helpers/hydrateData";
 
 export const getStarships = async (p1, p2, personArray, commonFilmNames) => {
 	// isolate common starships

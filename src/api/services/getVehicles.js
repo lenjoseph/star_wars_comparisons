@@ -1,5 +1,5 @@
-import { hydrateData } from "./hydrateData";
-import { doesWordStartWithVowel } from "./vowelCheck";
+import { hydrateData } from "../helpers/hydrateData";
+import { doesWordStartWithVowel } from "../helpers/vowelCheck";
 
 export const getVehicles = async (p1, p2, personArray, commonFilmNames) => {
 	let commonVehicles = personArray[0].vehicles.filter((vehicle) =>

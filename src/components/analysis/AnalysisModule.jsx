@@ -8,7 +8,7 @@ import {
 	showResults,
 	clearResults,
 } from "../../actions/results/results";
-import { comparePeople } from "../../analysis";
+import { comparePeople } from "../../api";
 import "../../styles/styles.css";
 import { resetSelections } from "../../actions/analysis/person.js";
 

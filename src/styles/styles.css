@@ -1,9 +1,3 @@
-/* deepBlue: #2d3142;
-mutedBlue: #4f5d75;
-grey: #bfc0c0;
-white: #ffffff;
-orange: #ef8354; */
-
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Ubuntu&display=swap');
 
 body {
@@ -15,87 +9,219 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-@keyframes beat1 {
+@-webkit-keyframes beat1 {
 	0% {
+		-webkit-transform: scale(1);
 		transform: scale(1);
 	}
 
 	10% {
+		-webkit-transform: scale(2);
 		transform: scale(2);
 	}
 
 	43.3% {
+		-webkit-transform: scale(1);
 		transform: scale(1);
 	}
 
 	76.6% {
+		-webkit-transform: scale(1);
 		transform: scale(1);
 	}
 
 	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
+
+@keyframes beat1 {
+	0% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	10% {
+		-webkit-transform: scale(2);
+		transform: scale(2);
+	}
+
+	43.3% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	76.6% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
+
+@-webkit-keyframes beat2 {
+	0% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	10% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	43.3% {
+		-webkit-transform: scale(2);
+		transform: scale(2);
+	}
+
+	76.6% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	100% {
+		-webkit-transform: scale(1);
 		transform: scale(1);
 	}
 }
 
 @keyframes beat2 {
 	0% {
+		-webkit-transform: scale(1);
 		transform: scale(1);
 	}
 
 	10% {
+		-webkit-transform: scale(1);
 		transform: scale(1);
 	}
 
 	43.3% {
+		-webkit-transform: scale(2);
 		transform: scale(2);
 	}
 
 	76.6% {
+		-webkit-transform: scale(1);
 		transform: scale(1);
 	}
 
 	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
+
+@-webkit-keyframes beat3 {
+	0% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	10% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	43.3% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	76.6% {
+		-webkit-transform: scale(2);
+		transform: scale(2);
+	}
+
+	100% {
+		-webkit-transform: scale(1);
 		transform: scale(1);
 	}
 }
 
 @keyframes beat3 {
 	0% {
+		-webkit-transform: scale(1);
 		transform: scale(1);
 	}
 
 	10% {
+		-webkit-transform: scale(1);
 		transform: scale(1);
 	}
 
 	43.3% {
+		-webkit-transform: scale(1);
 		transform: scale(1);
 	}
 
 	76.6% {
+		-webkit-transform: scale(2);
 		transform: scale(2);
 	}
 
 	100% {
+		-webkit-transform: scale(1);
 		transform: scale(1);
 	}
 }
 
-@keyframes slide {
+@-webkit-keyframes slide {
 	0% {
 		top: 500px;
+		-webkit-transform: rotateX(55deg) translateZ(0px);
 		transform: rotateX(55deg) translateZ(0px);
 		opacity: 1;
 	}
 
-	70% {
+	85% {
 		opacity: .7;
 	}
 
 	100% {
 		opacity: 0;
 		top: -2000px;
+		-webkit-transform: rotateX(55deg) translateZ(-2000px);
 		transform: rotateX(55deg) translateZ(-2000px);
+	}
+}
+
+@keyframes slide {
+	0% {
+		top: 500px;
+		-webkit-transform: rotateX(55deg) translateZ(0px);
+		transform: rotateX(55deg) translateZ(0px);
+		opacity: 1;
+	}
+
+	85% {
+		opacity: .7;
+	}
+
+	100% {
+		opacity: 0;
+		top: -2000px;
+		-webkit-transform: rotateX(55deg) translateZ(-2000px);
+		transform: rotateX(55deg) translateZ(-2000px);
+	}
+}
+
+@-webkit-keyframes flicker {
+	0% {
+		opacity: 0.1;
+	}
+
+	50% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0.1;
 	}
 }
 
@@ -119,6 +245,8 @@ body {
 
 .fade-enter-active {
 	opacity: 1;
+	-webkit-transition: all 400ms;
+	-o-transition: all 400ms;
 	transition: all 400ms;
 }
 
@@ -128,5 +256,7 @@ body {
 
 .fade-exit-active {
 	opacity: 0;
+	-webkit-transition: all 400ms;
+	-o-transition: all 400ms;
 	transition: all 400ms;
 }

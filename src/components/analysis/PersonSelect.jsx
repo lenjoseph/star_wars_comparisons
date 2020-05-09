@@ -1,8 +1,8 @@
-import React from 'react';
-import { css } from 'emotion';
-import { useSelector, useDispatch } from 'react-redux';
-import '../../styles/styles.css';
-import { setFirstPerson, setSecondPerson } from '../../actions/analysis/person';
+import React from "react";
+import { css } from "emotion";
+import { useSelector, useDispatch } from "react-redux";
+import "../../styles/styles.css";
+import { setFirstPerson, setSecondPerson } from "../../actions/analysis/person";
 
 const PersonSelect = (order) => {
 	const people = useSelector((state) => state.people);
@@ -13,7 +13,7 @@ const PersonSelect = (order) => {
 	const dispatch = useDispatch();
 
 	const setPerson = (person) => {
-		if (order.order === 'First') {
+		if (order.order === "First") {
 			dispatch(setFirstPerson({ personOne: person }));
 		} else {
 			dispatch(setSecondPerson({ personTwo: person }));
@@ -30,7 +30,7 @@ const PersonSelect = (order) => {
 					setPerson(e.target.value);
 				}}
 			>
-				<option defaultValue value={'Select Person'}>
+				<option defaultValue value={"Select Person"}>
 					Select Person
 				</option>
 				{/* generate options from api data stored in redux */}
@@ -43,12 +43,12 @@ const PersonSelect = (order) => {
 				})}
 			</select>
 			<div className={cn.selected}>
-				{order.order === 'First' && (
+				{order.order === "First" && (
 					<p className={cn.selectedText}>
 						Selected Person: {personOne.personOne}
 					</p>
 				)}
-				{order.order === 'Second' && (
+				{order.order === "Second" && (
 					<p className={cn.selectedText}>
 						Selected Person: {personTwo.personTwo}
 					</p>
@@ -60,8 +60,15 @@ const PersonSelect = (order) => {
 
 const cn = {
 	container: css`
+		display: -webkit-box;
+		display: -ms-flexbox;
 		display: flex;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: column;
 		flex-direction: column;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
 		align-items: center;
 		width: 90%;
 		height: 80%;
@@ -69,9 +76,12 @@ const cn = {
 		padding-top: 30px;
 		border-radius: 4px;
 		background: #2d3142;
+		-webkit-box-shadow: 0px 0px 6px #2d3142;
 		box-shadow: 0px 0px 6px #2d3142;
 	`,
 	label: css`
+		display: -webkit-box;
+		display: -ms-flexbox;
 		display: flex;
 		font-family: Ubuntu, sans-serif;
 		font-size: 1.3rem;
@@ -79,8 +89,15 @@ const cn = {
 		color: #f8f8f8;
 	`,
 	select: css`
+		display: -webkit-box;
+		display: -ms-flexbox;
 		display: flex;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: row;
 		flex-direction: row;
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
 		justify-content: center;
 		width: 80%;
 		height: 40px;

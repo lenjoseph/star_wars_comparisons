@@ -1,4 +1,4 @@
-import axios from "axios";
+import { hydrateData } from "./hydrateData";
 
 export const getStarships = async (p1, p2, personArray, commonFilmNames) => {
 	// isolate common starships
@@ -8,41 +8,7 @@ export const getStarships = async (p1, p2, personArray, commonFilmNames) => {
 
 	if (commonStarships.length) {
 		// resolve each starship url and nested film using async map
-		const starshipObjs = await Promise.all(
-			commonStarships.map((url) =>
-				axios
-					.get(url)
-					// res is a starship object
-					.then(async (res) => {
-						// resolving film objects for film url in each starship
-						const films = await Promise.all(
-							res.data.films.map(async (url) =>
-								axios
-									.get(url)
-									.then((res) => {
-										// return just title of film
-										return res.data.title;
-									})
-									.catch((err) => {
-										console.log(
-											JSON.stringify({
-												error: err,
-											})
-										);
-									})
-							)
-						);
-						// return final shape of map to array
-						return {
-							name: res.data.name,
-							films: films,
-						};
-					})
-					.catch((err) => {
-						console.log(JSON.stringify({ error: err }));
-					})
-			)
-		);
+		const starshipObjs = await hydrateData(commonStarships);
 
 		// filter the movies for each starship that are not shared across the two people
 		const filteredStarships = starshipObjs.map((ss) => {

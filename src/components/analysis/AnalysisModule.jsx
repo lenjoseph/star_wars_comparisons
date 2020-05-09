@@ -32,7 +32,7 @@ const AnalysisModule = () => {
 		);
 		// assemble final results from promises
 		const finalResults = [].concat.apply([], results);
-		// data is ready before settimeout finished, but the delay makes the transition more engaging
+		// data is ready before settimeout finished, but the delay prevents a jolt to the user
 		setTimeout(() => {
 			dispatch(setLoadingFalse());
 			dispatch(updateResults(finalResults));
@@ -83,9 +83,18 @@ const AnalysisModule = () => {
 
 const cn = {
 	container: css`
+		display: -webkit-box;
+		display: -ms-flexbox;
 		display: flex;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: column;
 		flex-direction: column;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
 		align-items: center;
+		-webkit-box-pack: start;
+		-ms-flex-pack: start;
 		justify-content: flex-start;
 		height: 70%;
 		min-height: 450px;
@@ -95,12 +104,23 @@ const cn = {
 		border-radius: 8px;
 		margin-top: 40px;
 		padding: 10px;
+		-webkit-transition: all 0.3s;
+		-o-transition: all 0.3s;
 		transition: all 0.3s;
 	`,
 	controls: css`
+		display: -webkit-box;
+		display: -ms-flexbox;
 		display: flex;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: column;
 		flex-direction: column;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
 		align-items: center;
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
 		justify-content: center;
 		height: 20%;
 		width: 100%;
@@ -116,9 +136,18 @@ const cn = {
 		color: #2d3142;
 	`,
 	runComparison: css`
+		display: -webkit-box;
+		display: -ms-flexbox;
 		display: flex;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: row;
 		flex-direction: row;
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
 		justify-content: center;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
 		align-items: center;
 		border-radius: 3px;
 		border: none;
@@ -129,9 +158,11 @@ const cn = {
 		color: white;
 		font-family: ubuntu, sans-serif;
 		font-size: 1.2rem;
+		-webkit-box-shadow: 0px 0px 6px #2e7d32;
 		box-shadow: 0px 0px 6px #2e7d32;
 		&:active {
 			box-shadow: inset 0px 0px 4px black;
+			-webkit-box-shadow: inset 0px 0px 4px black;
 			outline: none;
 		}
 		&:focus {
@@ -143,28 +174,56 @@ const cn = {
 		&:disabled {
 			background: #a0a0a0;
 			box-shadow: none;
+			-webkit-box-shadow: none;
 		}
 	`,
 	selectGroup: css`
+		display: -webkit-box;
+		display: -ms-flexbox;
 		display: flex;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: row;
 		flex-direction: row;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
 		align-items: center;
+		-webkit-box-pack: space-evenly;
+		-ms-flex-pack: space-evenly;
 		justify-content: space-evenly;
 		height: 60%;
 		width: 100%;
 	`,
 	selectHeader: css`
+		display: -webkit-box;
+		display: -ms-flexbox;
 		display: flex;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: row;
 		flex-direction: row;
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
 		justify-content: center;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
 		align-items: center;
 		height: 20%;
 		width: 100%;
 	`,
 	selectSide: css`
+		display: -webkit-box;
+		display: -ms-flexbox;
 		display: flex;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: column;
 		flex-direction: column;
+		-webkit-box-pack: start;
+		-ms-flex-pack: start;
 		justify-content: flex-start;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
 		align-items: center;
 		height: 100%;
 		width: 50%;

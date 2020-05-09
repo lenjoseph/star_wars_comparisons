@@ -1,5 +1,5 @@
-import React from 'react';
-import { css } from 'emotion';
+import React from "react";
+import { css } from "emotion";
 
 const Header = () => {
 	return (
@@ -13,8 +13,15 @@ const Header = () => {
 
 const cn = {
 	header: css`
+		display: -webkit-box;
+		display: -ms-flexbox;
 		display: flex;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: row;
 		flex-direction: row;
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
 		justify-content: center;
 		width: 80%;
 		border-radius: 10px;

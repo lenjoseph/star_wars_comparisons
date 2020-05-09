@@ -11,3 +11,4 @@ react app to compare star wars characters and identify whether they have lived a
 1. There is some duplicate code that needs to be extracted into helper functions
 2. The repo needs test coverage
 3. Integrate GQL interface for specifying query schemas
+4. Add specificity to errors for improved observability

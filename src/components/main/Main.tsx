@@ -5,7 +5,7 @@ import { getPeople } from '../../api/services/getPeople';
 import { setPeople } from '../../actions/analysis/people';
 import { setLoadingFalse } from '../../actions/main/loading';
 import { css } from 'emotion';
-import { People, RootState } from '../../types/index';
+import { People, RootState, Person } from '../../types/index';
 import Header from './Header';
 import Loading from './Loading';
 import AnalysisModule from '../analysis/AnalysisModule';
@@ -24,19 +24,16 @@ const Main = () => {
 			getPeople('https://swapi.dev/api/people/', [], resolve, reject);
 		})
 			.then((res: People) => {
-				dispatch(
-					setPeople(
-						res.map((person) => {
-							return {
-								name: person.name,
-								films: person.films,
-								homeworld: person.homeworld,
-								starships: person.starships,
-								vehicles: person.vehicles,
-							};
-						})
-					)
-				);
+				const people = res.map((person: Person) => {
+					return {
+						name: person.name,
+						films: person.films,
+						homeworld: person.homeworld,
+						starships: person.starships,
+						vehicles: person.vehicles,
+					};
+				});
+				dispatch(setPeople(people));
 				dispatch(setLoadingFalse());
 			})
 			.catch((err) => {

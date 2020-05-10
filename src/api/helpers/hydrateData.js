@@ -1,38 +1,32 @@
 import axios from "axios";
+import Bluebird from "bluebird";
 
 export const hydrateData = async (commonArray) => {
-	const data = await Promise.all(
-		// commonArray is an array of shared vehicle or starship URLs
-		commonArray.map((url) =>
-			axios
-				.get(url)
-				// res is a vehicle or starship object
-				.then(async (res) => {
-					// resolving film objects for film url in each object
-					const films = await Promise.all(
-						res.data.films.map(async (url) =>
-							axios
-								.get(url)
-								.then((res) => {
-									// return just title of film
-									return res.data.title;
-								})
-								.catch((err) => {
-									console.log(JSON.stringify({ error: err }));
-								})
-						)
-					);
-					// return final mapped shape to the array
-					return {
-						name: res.data.name,
-						films: films,
-					};
-				})
-				.catch((err) => {
-					console.log(JSON.stringify({ error: err }));
-				})
-		)
-	);
-	// return final array to caller
-	return data;
+	// function is passed into getObject mapper to resolve film title of each film url
+	const getFilmTitle = async (url) => {
+		const { data } = await axios.get(url);
+		return data.title;
+	};
+
+	// function is passed into getObjects mapper to resolve each vehicle or starship
+	const getObject = async (url) => {
+		const { data } = await axios.get(url);
+		const films = await Bluebird.map(data.films, getFilmTitle, {
+			concurrency: 3,
+		});
+		return {
+			name: data.name,
+			films,
+		};
+	};
+
+	// function is mapper that resolves each vehicle using passed in resolvers and concurrency control
+	const getObjects = async (commonArray) => {
+		const objects = await Bluebird.map(commonArray, getObject, {
+			concurrency: 3,
+		});
+		return objects;
+	};
+
+	return getObjects(commonArray);
 };

@@ -8,7 +8,5 @@ react app to compare star wars characters and identify whether they have lived a
 4. run 'npm start' inside the root directory of this project to run the server on localhost:8080
 
 # notable areas for improvement
-1. There is some duplicate code that needs to be extracted into helper functions
-2. The repo needs test coverage
-3. Integrate GQL interface for specifying query schemas
-4. Add specificity to errors for improved observability
+1. The repo needs test coverage
+2. Add specificity to errors for improved observability

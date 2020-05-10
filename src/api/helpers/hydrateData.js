@@ -20,7 +20,7 @@ export const hydrateData = async (commonArray) => {
 		};
 	};
 
-	// function is mapper that resolves each vehicle using passed in resolvers and concurrency control
+	// function is mapper that resolves each vehicle or starship from urls in commonArray using passed in resolvers and concurrency control
 	const getObjects = async (commonArray) => {
 		const objects = await Bluebird.map(commonArray, getObject, {
 			concurrency: 3,

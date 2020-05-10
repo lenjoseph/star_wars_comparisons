@@ -1,17 +1,17 @@
-import axios from "axios";
-import Bluebird from "bluebird";
+import axios from 'axios';
+import Bluebird from 'bluebird';
 
-export const hydrateData = async (commonArray) => {
+export const hydrateData = async (commonArray: string[]) => {
 	// function is passed into getObject mapper to resolve film title of each film url
-	const getFilmTitle = async (url) => {
+	const getFilmTitle = async (url: string) => {
 		const { data } = await axios.get(url);
 		return data.title;
 	};
 
 	// function is passed into getObjects mapper to resolve each vehicle or starship
-	const getObject = async (url) => {
+	const getObject = async (url: string) => {
 		const { data } = await axios.get(url);
-		const films = await Bluebird.map(data.films, getFilmTitle, {
+		const films: string[] = await Bluebird.map(data.films, getFilmTitle, {
 			concurrency: 3,
 		});
 		return {
@@ -21,7 +21,7 @@ export const hydrateData = async (commonArray) => {
 	};
 
 	// function is mapper that resolves each vehicle or starship from urls in commonArray using passed in resolvers and concurrency control
-	const getObjects = async (commonArray) => {
+	const getObjects = async (commonArray: string[]) => {
 		const objects = await Bluebird.map(commonArray, getObject, {
 			concurrency: 3,
 		});

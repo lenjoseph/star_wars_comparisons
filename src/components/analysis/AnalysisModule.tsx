@@ -1,21 +1,25 @@
-import React, { useEffect, useState } from "react";
-import { css } from "emotion";
-import { useDispatch, useSelector } from "react-redux";
-import PersonSelect from "./PersonSelect.jsx";
-import { setLoadingTrue, setLoadingFalse } from "../../actions/main/loading";
+import React, { useEffect, useState } from 'react';
+import { css } from 'emotion';
+import { useDispatch, useSelector } from 'react-redux';
+import PersonSelect from './PersonSelect';
+import { setLoadingTrue, setLoadingFalse } from '../../actions/main/loading';
 import {
 	updateResults,
 	showResults,
 	clearResults,
-} from "../../actions/results/results";
-import { comparePeople } from "../../api";
-import "../../styles/styles.css";
-import { resetSelections } from "../../actions/analysis/person.js";
+} from '../../actions/results/results';
+import { comparePeople } from '../../api';
+import '../../styles/styles.css';
+import { resetSelections } from '../../actions/analysis/person';
+import { RootState } from '../../types/index';
 
 const AnalysisModule = () => {
-	let people = useSelector((state) => state.people);
-	let personOne = useSelector((state) => state.personOne);
-	let personTwo = useSelector((state) => state.personTwo);
+	const selectPeople = (state: RootState) => state.people;
+	const selectPersonOne = (state: RootState) => state.personOne.personOne;
+	const selectPersonTwo = (state: RootState) => state.personTwo.personTwo;
+	let people = useSelector(selectPeople);
+	let personOne = useSelector(selectPersonOne);
+	let personTwo = useSelector(selectPersonTwo);
 	const dispatch = useDispatch();
 	useEffect(() => {
 		// clearing out results and selections from previous analysis stored in state
@@ -25,13 +29,9 @@ const AnalysisModule = () => {
 	const startComparison = async () => {
 		dispatch(setLoadingTrue());
 		// call helper to perform analysis on api data in state
-		const results = await comparePeople(
-			personOne.personOne,
-			personTwo.personTwo,
-			people
-		);
+		const results = await comparePeople(personOne, personTwo, people);
 		// assemble final results from promises
-		const finalResults = [].concat.apply([], results);
+		const finalResults: string[] = [].concat.apply([], results);
 		// data is ready before settimeout finished, but the delay prevents a jolt to the user
 		setTimeout(() => {
 			dispatch(setLoadingFalse());
@@ -42,27 +42,35 @@ const AnalysisModule = () => {
 
 	const isDisabled = () => {
 		return (
-			!personOne.personOne ||
-			!personTwo.personTwo ||
-			personOne.personOne === "Select Person" ||
-			personTwo.personTwo === "Select Person" ||
-			personOne.personOne === personTwo.personTwo
+			!personOne ||
+			!personTwo ||
+			personOne === 'Select Person' ||
+			personTwo === 'Select Person' ||
+			personOne === personTwo
 		);
 	};
 	return (
 		<>
 			<div className={cn.container}>
 				<div className={cn.selectHeader}>
-					<p className={cn.headerText}>
-						Select two people to compare
-					</p>
+					<p className={cn.headerText}>Select two people to compare</p>
 				</div>
 				<div className={cn.selectGroup}>
 					<div className={cn.selectSide}>
-						<PersonSelect order={"First"} />
+						<PersonSelect
+							order={'First'}
+							people={people}
+							personOne={personOne}
+							personTwo={personTwo}
+						/>
 					</div>
 					<div className={cn.selectSide}>
-						<PersonSelect order={"Second"} />
+						<PersonSelect
+							order={'Second'}
+							people={people}
+							personOne={personOne}
+							personTwo={personTwo}
+						/>
 					</div>
 				</div>
 				<div className={cn.controls}>

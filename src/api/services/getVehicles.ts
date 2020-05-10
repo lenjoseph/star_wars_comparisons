@@ -1,7 +1,13 @@
-import { hydrateData } from "../helpers/hydrateData";
-import { doesWordStartWithVowel } from "../helpers/vowelCheck";
+import { hydrateData } from '../helpers/hydrateData';
+import { doesWordStartWithVowel } from '../helpers/vowelCheck';
+import { People, Vehicle } from '../../types';
 
-export const getVehicles = async (p1, p2, personArray, commonFilmNames) => {
+export const getVehicles = async (
+	p1: string,
+	p2: string,
+	personArray: People,
+	commonFilmNames: string[]
+) => {
 	let commonVehicles = personArray[0].vehicles.filter((vehicle) =>
 		personArray[1].vehicles.includes(vehicle)
 	);
@@ -11,9 +17,7 @@ export const getVehicles = async (p1, p2, personArray, commonFilmNames) => {
 
 		// filter the vehicle array for any vehicle films that were not included in the common films
 		const filteredVehicles = vehicleObjs.map((veh) => {
-			let films = veh.films.filter((film) =>
-				commonFilmNames.includes(film)
-			);
+			let films = veh.films.filter((film) => commonFilmNames.includes(film));
 			return {
 				name: veh.name,
 				films: films,
@@ -28,9 +32,7 @@ export const getVehicles = async (p1, p2, personArray, commonFilmNames) => {
 				finalResults.push(
 					`${p1} and ${p2} both traveled on ${doesWordStartWithVowel(
 						filteredVehicles[i].name
-					)} ${filteredVehicles[i].name} in ${
-						filteredVehicles[i].films[j]
-					}.`
+					)} ${filteredVehicles[i].name} in ${filteredVehicles[i].films[j]}.`
 				);
 			}
 		}

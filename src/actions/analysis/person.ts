@@ -1,11 +1,11 @@
-export const setFirstPerson = (payload) => {
+export const setFirstPerson = (payload: { personOne: string }) => {
 	return {
 		type: 'SET_PERSON_ONE',
 		payload,
 	};
 };
 
-export const setSecondPerson = (payload) => {
+export const setSecondPerson = (payload: { personTwo: string }) => {
 	return {
 		type: 'SET_PERSON_TWO',
 		payload,

@@ -1,19 +1,27 @@
-import React from "react";
-import { css } from "emotion";
-import { useSelector, useDispatch } from "react-redux";
-import "../../styles/styles.css";
-import { setFirstPerson, setSecondPerson } from "../../actions/analysis/person";
+import React from 'react';
+import { css } from 'emotion';
+import { useSelector, useDispatch } from 'react-redux';
+import '../../styles/styles.css';
+import { setFirstPerson, setSecondPerson } from '../../actions/analysis/person';
+import { RootState, Person, People } from '../../types';
 
-const PersonSelect = (order) => {
-	const people = useSelector((state) => state.people);
+type PersonSelectProps = {
+	order: string;
+	people: People;
+	personOne: string;
+	personTwo: string;
+};
 
-	let personOne = useSelector((state) => state.personOne);
-	let personTwo = useSelector((state) => state.personTwo);
-
+const PersonSelect = ({
+	order,
+	people,
+	personOne,
+	personTwo,
+}: PersonSelectProps) => {
 	const dispatch = useDispatch();
 
-	const setPerson = (person) => {
-		if (order.order === "First") {
+	const setPerson = (person: string) => {
+		if (order === 'First') {
 			dispatch(setFirstPerson({ personOne: person }));
 		} else {
 			dispatch(setSecondPerson({ personTwo: person }));
@@ -22,7 +30,7 @@ const PersonSelect = (order) => {
 
 	return (
 		<div className={cn.container}>
-			<label className={cn.label}>Select {order.order} Person</label>
+			<label className={cn.label}>Select {order} Person</label>
 			<select
 				className={cn.select}
 				onChange={(e) => {
@@ -30,11 +38,9 @@ const PersonSelect = (order) => {
 					setPerson(e.target.value);
 				}}
 			>
-				<option defaultValue value={"Select Person"}>
-					Select Person
-				</option>
+				<option value={'Select Person'}>Select Person</option>
 				{/* generate options from api data stored in redux */}
-				{people.map((person, key) => {
+				{people.map((person: Person, key: number) => {
 					return (
 						<option key={key} value={person.name}>
 							{person.name}
@@ -42,16 +48,12 @@ const PersonSelect = (order) => {
 					);
 				})}
 			</select>
-			<div className={cn.selected}>
-				{order.order === "First" && (
-					<p className={cn.selectedText}>
-						Selected Person: {personOne.personOne}
-					</p>
+			<div>
+				{order === 'First' && (
+					<p className={cn.selectedText}>Selected Person: {personOne}</p>
 				)}
-				{order.order === "Second" && (
-					<p className={cn.selectedText}>
-						Selected Person: {personTwo.personTwo}
-					</p>
+				{order === 'Second' && (
+					<p className={cn.selectedText}>Selected Person: {personTwo}</p>
 				)}
 			</div>
 		</div>

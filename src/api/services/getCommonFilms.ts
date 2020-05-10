@@ -1,7 +1,9 @@
-export const getCommonFilms = (personArray) => {
+import { People } from '../../types';
+
+export const getCommonFilms = (personArray: People) => {
 	const commonFilms = [];
 	if (personArray[0].films.length && personArray[1].films.length) {
-		if (personArray[0].length < personArray[1].length) {
+		if (personArray[0].films.length < personArray[1].films.length) {
 			personArray[0].films.forEach((film) => {
 				if (personArray[1].films.includes(film)) {
 					commonFilms.push(film);

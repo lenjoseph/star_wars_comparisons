@@ -1,27 +1,29 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { SwitchTransition, CSSTransition } from "react-transition-group";
-import { getPeople } from "../../api/services/getPeople";
-import { setPeople } from "../../actions/analysis/people";
-import { setLoadingFalse } from "../../actions/main/loading";
-import { css } from "emotion";
-import Header from "./Header.jsx";
-import Loading from "./Loading.jsx";
-import AnalysisModule from "../analysis/AnalysisModule.jsx";
-import Results from "../results/Results.jsx";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { SwitchTransition, CSSTransition } from 'react-transition-group';
+import { getPeople } from '../../api/services/getPeople';
+import { setPeople } from '../../actions/analysis/people';
+import { setLoadingFalse } from '../../actions/main/loading';
+import { css } from 'emotion';
+import { People, RootState } from '../../types/index';
+import Header from './Header';
+import Loading from './Loading';
+import AnalysisModule from '../analysis/AnalysisModule';
+import Results from '../results/Results';
 
 const Main = () => {
 	const dispatch = useDispatch();
 
-	const loading = useSelector((state) => state.loading.loading);
-	const resultsShowing = useSelector(
-		(state) => state.showingResults.showingResults
-	);
+	const selectLoading = (state: RootState) => state.loading.loading;
+	const loading = useSelector(selectLoading);
+	const selectShowingResults = (state: RootState) =>
+		state.showingResults.showingResults;
+	const showingResults = useSelector(selectShowingResults);
 	useEffect(() => {
 		new Promise((resolve, reject) => {
-			getPeople("https://swapi.dev/api/people/", [], resolve, reject);
+			getPeople('https://swapi.dev/api/people/', [], resolve, reject);
 		})
-			.then((res) => {
+			.then((res: People) => {
 				dispatch(
 					setPeople(
 						res.map((person) => {
@@ -45,11 +47,17 @@ const Main = () => {
 		<div className={cn.container}>
 			<Header />
 			<SwitchTransition mode="out-in">
-				<CSSTransition key={loading} timeout={400} classNames="fade">
+				<CSSTransition
+					key={
+						loading ? 'loading' : showingResults ? 'showingResult' : 'analysis'
+					}
+					timeout={400}
+					classNames="fade"
+				>
 					<>
 						{loading ? (
 							<Loading />
-						) : resultsShowing ? (
+						) : showingResults ? (
 							<Results />
 						) : (
 							<AnalysisModule />

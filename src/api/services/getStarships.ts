@@ -1,24 +1,32 @@
-import { hydrateData } from "../helpers/hydrateData";
+import { hydrateData } from '../helpers/hydrateData';
+import { People, Starship, Starships } from '../../types';
 
-export const getStarships = async (p1, p2, personArray, commonFilmNames) => {
+export const getStarships = async (
+	p1: string,
+	p2: string,
+	personArray: People,
+	commonFilmNames: string[]
+) => {
 	// isolate common starships
-	const commonStarships = personArray[0].starships.filter((starship) => {
-		return personArray[1].starships.includes(starship);
-	});
+	const commonStarships: string[] = personArray[0].starships.filter(
+		(starship) => {
+			return personArray[1].starships.includes(starship);
+		}
+	);
 
 	if (commonStarships.length) {
 		// resolve each starship url and nested film using async map
 		const starshipObjs = await hydrateData(commonStarships);
 
 		// filter the movies for each starship that are not shared across the two people
-		const filteredStarships = starshipObjs.map((ss) => {
-			let films = ss.films.filter((film) =>
+		const filteredStarships = starshipObjs.map((ss: Starship) => {
+			let films = ss.films.filter((film: string) =>
 				commonFilmNames.includes(film)
 			);
 			return { name: ss.name, films: films };
 		});
 
-		const finalResults = [];
+		const finalResults: string[] = [];
 
 		// hydrate final results array before returning to caller
 		for (let i = 0; i < filteredStarships.length; i++) {

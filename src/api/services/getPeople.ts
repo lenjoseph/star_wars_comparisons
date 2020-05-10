@@ -1,6 +1,12 @@
-import axios from "axios";
+import axios from 'axios';
+import { People } from '../../types';
 
-export const getPeople = (currentURL, people, resolve, reject) => {
+export const getPeople = (
+	currentURL: string,
+	people: People,
+	resolve: Function,
+	reject: Function
+) => {
 	axios
 		.get(currentURL)
 		.then((res) => {
@@ -12,6 +18,6 @@ export const getPeople = (currentURL, people, resolve, reject) => {
 		})
 		.catch((err) => {
 			console.log(JSON.stringify({ error: err }));
-			reject("Something bad happened. Please refresh the page.");
+			reject('Something bad happened. Please refresh the page.');
 		});
 };

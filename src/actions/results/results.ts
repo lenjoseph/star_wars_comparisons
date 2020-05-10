@@ -1,4 +1,4 @@
-export const updateResults = (payload) => {
+export const updateResults = (payload: string[]) => {
 	return {
 		type: 'UPDATE_RESULTS',
 		payload,

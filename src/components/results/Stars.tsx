@@ -1,12 +1,11 @@
-import React, { useState } from "react";
-import "../../styles/styles.css";
+import React, { useState } from 'react';
+import '../../styles/styles.css';
 
 const generateStars = () => {
 	let stars = [...Array.from({ length: 50 }, (v, k) => k + 1)].map((elem) => {
 		let heightandWidth = Math.random() * 3;
 		return {
 			key: elem,
-			position: `absolute`,
 			height: `${heightandWidth}px`,
 			width: `${heightandWidth}px`,
 			borderRadius: `50%`,
@@ -39,14 +38,14 @@ const Stars = () => {
 					<div
 						key={elem.key}
 						style={{
-							position: `${elem.position}`,
+							position: 'absolute',
 							height: `${elem.height}`,
 							width: `${elem.width}`,
 							borderRadius: `${elem.borderRadius}`,
 							background: `${elem.background}`,
 							top: `${elem.top}`,
 							left: `${elem.left}`,
-							zIndex: `${elem.zIndex}`,
+							zIndex: elem.zIndex,
 							margin: `${elem.margin}`,
 							animation: `flicker ${elem.animationTiming} infinite`,
 						}}

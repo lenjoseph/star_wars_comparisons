@@ -1,14 +1,16 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { css } from "emotion";
-import "../../styles/styles.css";
-import { hideResults } from "../../actions/results/results";
-import { setLoadingTrue, setLoadingFalse } from "../../actions/main/loading";
-import Stars from "./Stars.jsx";
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { css } from 'emotion';
+import '../../styles/styles.css';
+import { hideResults } from '../../actions/results/results';
+import { setLoadingTrue, setLoadingFalse } from '../../actions/main/loading';
+import Stars from './Stars';
+import { RootState } from '../../types';
 
 const Results = () => {
 	const dispatch = useDispatch();
-	const results = useSelector((state) => state.results);
+	const selectResults = (state: RootState) => state.results;
+	const results = useSelector(selectResults);
 	const exitResults = () => {
 		dispatch(hideResults());
 		// artifical loading sequence to avoid UI jolt
@@ -22,14 +24,14 @@ const Results = () => {
 			<Stars />
 			<div
 				style={{
-					animation: "slide 50s linear",
-					animationIterationCount: "infinite",
+					animation: 'slide 50s linear',
+					animationIterationCount: 'infinite',
 				}}
 				className={cn.slideText}
 			>
 				{results.map((result, key) => {
 					return (
-						<p style={{ marginBottom: "5px" }} key={key}>
+						<p style={{ marginBottom: '5px' }} key={key}>
 							{result}
 						</p>
 					);

@@ -1,19 +1,20 @@
-import { getHomeworlds } from "./services/getHomeworld.js";
-import { getVehicles } from "./services/getVehicles.js";
-import { getStarships } from "./services/getStarships.js";
-import { getCommonFilms } from "./services/getCommonFilms";
-import axios from "axios";
+import { getHomeworlds } from './services/getHomeworld';
+import { getVehicles } from './services/getVehicles';
+import { getStarships } from './services/getStarships';
+import { getCommonFilms } from './services/getCommonFilms';
+import axios from 'axios';
+import { Person, People } from '../types/index';
 
-export const comparePeople = async (p1, p2, people) => {
+export const comparePeople = async (p1: string, p2: string, people: People) => {
 	// get objects associated with names
 	const personArray = [];
 	personArray.push(
-		people.find((person) => {
+		people.find((person: Person) => {
 			return person.name === p1;
 		})
 	);
 	personArray.push(
-		people.find((person) => {
+		people.find((person: Person) => {
 			return person.name === p2;
 		})
 	);
@@ -27,15 +28,13 @@ export const comparePeople = async (p1, p2, people) => {
 	}
 
 	// get names of shared films
-	const commonFilmNames = await Promise.all(
+	const commonFilmNames: string[] = await Promise.all(
 		commonFilms.map((url) =>
-			axios.get(url).then((res) => {
+			axios.get(url).then((res: { data: { title: string } }) => {
 				return res.data.title;
 			})
 		)
-	).catch((err) => {
-		console.log(JSON.stringify({ error: err }));
-	});
+	);
 
 	// perform analysis on each category for two people
 	const [
@@ -46,11 +45,9 @@ export const comparePeople = async (p1, p2, people) => {
 		getHomeworlds(p1, p2, personArray, commonFilmNames),
 		getVehicles(p1, p2, personArray, commonFilmNames),
 		getStarships(p1, p2, personArray, commonFilmNames),
-	]).catch((err) => {
-		console.log(JSON.stringify({ error: err }));
-	});
+	]);
 
-	const commonFilmResults = [];
+	const commonFilmResults: string[] = [];
 
 	// if there are no common vehicles, starships, or homelands, but there are common films, list the films
 	if (
@@ -93,10 +90,5 @@ export const comparePeople = async (p1, p2, people) => {
 	}
 
 	// return resolved promises to caller
-	return [
-		homeworldResults,
-		vehicleResults,
-		starshipResults,
-		commonFilmResults,
-	];
+	return [homeworldResults, vehicleResults, starshipResults, commonFilmResults];
 };

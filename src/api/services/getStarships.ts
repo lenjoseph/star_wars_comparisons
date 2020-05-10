@@ -15,28 +15,32 @@ export const getStarships = async (
 	);
 
 	if (commonStarships.length) {
-		// resolve each starship url and nested film using async map
-		const starshipObjs = await hydrateData(commonStarships);
+		try {
+			// resolve each starship url and nested film using async map
+			const starshipObjs = await hydrateData(commonStarships);
 
-		// filter the movies for each starship that are not shared across the two people
-		const filteredStarships = starshipObjs.map((ss: Starship) => {
-			let films = ss.films.filter((film: string) =>
-				commonFilmNames.includes(film)
-			);
-			return { name: ss.name, films: films };
-		});
-
-		const finalResults: string[] = [];
-
-		// hydrate final results array before returning to caller
-		for (let i = 0; i < filteredStarships.length; i++) {
-			for (let j = 0; j < filteredStarships[i].films.length; j++) {
-				finalResults.push(
-					`${p1} and ${p2} both traveled in the ${filteredStarships[i].name} in ${filteredStarships[i].films[j]}.`
+			// filter the movies for each starship that are not shared across the two people
+			const filteredStarships = starshipObjs.map((ss: Starship) => {
+				let films = ss.films.filter((film: string) =>
+					commonFilmNames.includes(film)
 				);
+				return { name: ss.name, films: films };
+			});
+
+			const finalResults: string[] = [];
+
+			// hydrate final results array before returning to caller
+			for (let i = 0; i < filteredStarships.length; i++) {
+				for (let j = 0; j < filteredStarships[i].films.length; j++) {
+					finalResults.push(
+						`${p1} and ${p2} both traveled in the ${filteredStarships[i].name} in ${filteredStarships[i].films[j]}.`
+					);
+				}
 			}
+			return finalResults;
+		} catch (error) {
+			console.log(JSON.stringify({ error: error }));
 		}
-		return finalResults;
 	} else {
 		// if there are no common starships, exit the analysis
 		return [];

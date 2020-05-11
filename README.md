@@ -1,7 +1,10 @@
 # star_wars_comparisons
 react app to compare star wars characters and identify whether they have lived and/or been seen together
 
-# running the app
+# visiting the app in production
+To see this app live in production, please visit https://master.d1ymyl6lucrpzb.amplifyapp.com/
+
+# running the app locally
 1. Ensure Node and NPM are installed
 2. Clone this repo
 3. run 'npm i' inside the root directory of this project to download node module depenedencies

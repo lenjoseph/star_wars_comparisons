@@ -55,6 +55,23 @@ export type Film = {
 	vehicles: Vehicles;
 };
 
+export type Planet = {
+	climate: string;
+	created: string;
+	diameter: string;
+	edited: string;
+	films: Films;
+	gavity: string;
+	name: string;
+	orbital_period: string;
+	population: string;
+	residents: string[];
+	rotation_period: string;
+	surface_water: string;
+	terrain: string;
+	url: string;
+};
+
 export type Person = {
 	birth_year?: string;
 	eye_color?: string;

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { People } from '../../types';
+import { People, Planet, Films } from '../../types';
 import { convertToHTTPS } from '../helpers/safeURL';
 
 export const getHomeworlds = async (
@@ -10,15 +10,12 @@ export const getHomeworlds = async (
 ) => {
 	if (personArray[0].homeworld === personArray[1].homeworld) {
 		try {
-			// obj
-			const homeworldURL = personArray[0].homeworld;
-			let homeworld = await axios.get(convertToHTTPS(homeworldURL));
+			const homeworldURL: string = personArray[0].homeworld;
+			const homeworld = await axios.get(convertToHTTPS(homeworldURL));
 
-			// string value
-			let homeworldName = homeworld.data.name;
+			const homeworldName: string = homeworld.data.name;
 
-			// array of urls
-			let homeworldFilms = homeworld.data.films;
+			const homeworldFilms: Films = homeworld.data.films;
 
 			// hydrate film urls array
 			const homeWorldFilmTitles: string[] = await Promise.all(
@@ -29,7 +26,7 @@ export const getHomeworlds = async (
 				)
 			);
 
-			const filteredFilms = homeWorldFilmTitles.filter((film) =>
+			const filteredFilms: string[] = homeWorldFilmTitles.filter((film) =>
 				commonFilmNames.includes(film)
 			);
 

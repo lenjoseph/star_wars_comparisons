@@ -16,6 +16,19 @@ const Disclaimer = () => {
 				</a>
 				.
 			</p>
+			<br />
+			<p className={cn.disclaimerText}>
+				* To see the source code for this application, please visit the{' '}
+				<a
+					className={cn.link}
+					target="_blank"
+					rel="noopener noreferrer"
+					href="https://github.com/lenjoseph/star_wars_comparisons"
+				>
+					repo on GitHub
+				</a>
+				.
+			</p>
 		</div>
 	);
 };
@@ -27,8 +40,8 @@ const cn = {
 		display: flex;
 		-webkit-box-orient: horizontal;
 		-webkit-box-direction: normal;
-		-ms-flex-direction: row;
-		flex-direction: row;
+		-ms-flex-direction: column;
+		flex-direction: column;
 		-webkit-box-pack: center;
 		-ms-flex-pack: center;
 		justify-content: flex-start;

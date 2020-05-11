@@ -66,7 +66,6 @@ const cn = {
 		justify-content: center;
 		height: 80%;
 		width: 70%;
-		min-height: 450px;
 		max-height: 500px;
 		-webkit-perspective: 500px;
 		perspective: 500px;

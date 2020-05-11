@@ -8,7 +8,7 @@ export const getPeople = (
 	reject: Function
 ) => {
 	axios
-		.get(currentURL)
+		.get(currentURL.replace(/^http:\/\//i, 'https://'))
 		.then((res) => {
 			const newPeople = people.concat(res.data.results);
 			// if data.next is in object, rerun with new URL, else resolve the promise with concatenated data

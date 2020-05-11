@@ -3,7 +3,7 @@ import '../../styles/styles.css';
 
 const generateStars = () => {
 	let stars = [...Array.from({ length: 50 }, (v, k) => k + 1)].map((elem) => {
-		let heightandWidth = Math.random() * 3;
+		let heightandWidth = Math.random() * 2;
 		return {
 			key: elem,
 			height: `${heightandWidth}px`,
@@ -31,6 +31,7 @@ const Stars = () => {
 				height: `100%`,
 				width: `100%`,
 				zIndex: -1,
+				animation: `zoomOut 50s infinite`,
 			}}
 		>
 			{stars.map((elem) => {

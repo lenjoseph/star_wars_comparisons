@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Ubuntu&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata&family=Ubuntu&display=swap");
 
 body {
 	margin: 0;
@@ -180,11 +180,11 @@ body {
 	}
 
 	85% {
-		opacity: .8;
+		opacity: 0.8;
 	}
 
 	100% {
-		opacity: .7;
+		opacity: 0.7;
 		top: -2000px;
 		-webkit-transform: rotateX(55deg) translateZ(-2000px);
 		transform: rotateX(55deg) translateZ(-2000px);
@@ -200,7 +200,7 @@ body {
 	}
 
 	85% {
-		opacity: .7;
+		opacity: 0.7;
 	}
 
 	100% {
@@ -208,6 +208,26 @@ body {
 		top: -2000px;
 		-webkit-transform: rotateX(55deg) translateZ(-2000px);
 		transform: rotateX(55deg) translateZ(-2000px);
+	}
+}
+
+@keyframes zoomOut {
+	0% {
+		transform: translateZ(200px);
+	}
+
+	100% {
+		transform: translateZ(0px);
+	}
+}
+
+@-webkit-keyframes zoomOut {
+	0% {
+		transform: scale(1);
+	}
+
+	100% {
+		transform: scale(0.1);
 	}
 }
 

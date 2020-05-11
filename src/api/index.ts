@@ -30,9 +30,11 @@ export const comparePeople = async (p1: string, p2: string, people: People) => {
 	// get names of shared films
 	const commonFilmNames: string[] = await Promise.all(
 		commonFilms.map((url) =>
-			axios.get(url).then((res: { data: { title: string } }) => {
-				return res.data.title;
-			})
+			axios
+				.get(url.replace(/^http:\/\//i, 'https://'))
+				.then((res: { data: { title: string } }) => {
+					return res.data.title;
+				})
 		)
 	);
 

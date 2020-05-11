@@ -1,5 +1,6 @@
 # star_wars_comparisons
 react app to compare star wars characters and identify whether they have lived and/or been seen together
+This app receives data from the popular Star Wars API (SWAPI), found at https://swapi.dev/api/
 
 # visiting the app in production
 To see this app live in production, please visit https://master.d1ymyl6lucrpzb.amplifyapp.com/

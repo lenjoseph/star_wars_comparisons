@@ -48,7 +48,7 @@ const Stars = () => {
 							left: `${elem.left}`,
 							zIndex: elem.zIndex,
 							margin: `${elem.margin}`,
-							animation: `flicker ${elem.animationTiming} infinite`,
+							animation: `flicker ${elem.animationTiming} infinite, grow 50s infinite`,
 						}}
 					/>
 				);

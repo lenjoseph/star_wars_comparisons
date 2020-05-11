@@ -7,6 +7,7 @@ import { setLoadingFalse } from '../../actions/main/loading';
 import { css } from 'emotion';
 import { People, RootState, Person } from '../../types/index';
 import Header from './Header';
+import Disclaimer from './Disclaimer';
 import Loading from './Loading';
 import AnalysisModule from '../analysis/AnalysisModule';
 import Results from '../results/Results';
@@ -62,6 +63,7 @@ const Main = () => {
 					</>
 				</CSSTransition>
 			</SwitchTransition>
+			<Disclaimer />
 		</div>
 	);
 };

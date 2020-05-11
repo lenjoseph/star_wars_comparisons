@@ -1,11 +1,11 @@
-import React from "react";
-import { css } from "emotion";
+import React from 'react';
+import { css } from 'emotion';
 
 const Header = () => {
 	return (
 		<div className={cn.header}>
 			<p className={cn.headerText}>
-				Welcome to the Star Wars Personnel Explorer
+				Welcome to the Star Wars Personnel Explorer by Len Joseph
 			</p>
 		</div>
 	);

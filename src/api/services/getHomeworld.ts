@@ -10,7 +10,10 @@ export const getHomeworlds = async (
 	if (personArray[0].homeworld === personArray[1].homeworld) {
 		try {
 			// obj
-			let homeworld = await axios.get(personArray[0].homeworld);
+			const homeworldURL = personArray[0].homeworld;
+			let homeworld = await axios.get(
+				homeworldURL.replace(/^http:\/\//i, 'https://')
+			);
 
 			// string value
 			let homeworldName = homeworld.data.name;
@@ -21,7 +24,7 @@ export const getHomeworlds = async (
 			// hydrate film urls array
 			const homeWorldFilmTitles: string[] = await Promise.all(
 				homeworldFilms.map((url: string) =>
-					axios.get(url).then((res) => {
+					axios.get(url.replace(/^http:\/\//i, 'https://')).then((res) => {
 						return res.data.title;
 					})
 				)

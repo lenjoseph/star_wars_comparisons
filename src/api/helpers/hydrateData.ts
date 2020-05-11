@@ -5,13 +5,13 @@ export const hydrateData = async (commonArray: string[]) => {
 	try {
 		// function is passed into getObject mapper to resolve film title of each film url
 		const getFilmTitle = async (url: string) => {
-			const { data } = await axios.get(url);
+			const { data } = await axios.get(url.replace(/^http:\/\//i, 'https://'));
 			return data.title;
 		};
 
 		// function is passed into getObjects mapper to resolve each vehicle or starship
 		const getObject = async (url: string) => {
-			const { data } = await axios.get(url);
+			const { data } = await axios.get(url.replace(/^http:\/\//i, 'https://'));
 			const films: string[] = await Bluebird.map(data.films, getFilmTitle, {
 				concurrency: 3,
 			});

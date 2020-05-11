@@ -3,7 +3,7 @@ react app to compare star wars characters and identify whether they have lived a
 This app receives data from the popular Star Wars API (SWAPI), found at https://swapi.dev/api/
 
 # visiting the app in production
-To see this app live in production, please visit https://master.d1ymyl6lucrpzb.amplifyapp.com/
+To see this app live in production, please visit https://master.d1ymyl6lucrpzb.amplifyapp.com/. This app is best viewed on a desktop or tablet, as it is not yet optimized for mobile accessibility.
 
 # running the app locally
 1. Ensure Node and NPM are installed

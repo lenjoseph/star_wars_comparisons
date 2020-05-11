@@ -180,11 +180,11 @@ body {
 	}
 
 	85% {
-		opacity: .7;
+		opacity: .8;
 	}
 
 	100% {
-		opacity: 0;
+		opacity: .7;
 		top: -2000px;
 		-webkit-transform: rotateX(55deg) translateZ(-2000px);
 		transform: rotateX(55deg) translateZ(-2000px);

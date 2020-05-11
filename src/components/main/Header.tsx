@@ -5,7 +5,7 @@ const Header = () => {
 	return (
 		<div className={cn.header}>
 			<p className={cn.headerText}>
-				Welcome to the Star Wars Personnel Explorer by Len Joseph
+				Welcome to the Star Wars Character Explorer by Len Joseph
 			</p>
 		</div>
 	);

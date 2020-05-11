@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { People } from '../../types';
+import { convertToHTTPS } from '../helpers/safeURL';
 
 export const getHomeworlds = async (
 	p1: string,
@@ -11,9 +12,7 @@ export const getHomeworlds = async (
 		try {
 			// obj
 			const homeworldURL = personArray[0].homeworld;
-			let homeworld = await axios.get(
-				homeworldURL.replace(/^http:\/\//i, 'https://')
-			);
+			let homeworld = await axios.get(convertToHTTPS(homeworldURL));
 
 			// string value
 			let homeworldName = homeworld.data.name;
@@ -24,7 +23,7 @@ export const getHomeworlds = async (
 			// hydrate film urls array
 			const homeWorldFilmTitles: string[] = await Promise.all(
 				homeworldFilms.map((url: string) =>
-					axios.get(url.replace(/^http:\/\//i, 'https://')).then((res) => {
+					axios.get(convertToHTTPS(url)).then((res) => {
 						return res.data.title;
 					})
 				)

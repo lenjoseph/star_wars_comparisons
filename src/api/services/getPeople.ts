@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { People } from '../../types';
+import { convertToHTTPS } from '../helpers/safeURL';
 
 export const getPeople = (
 	currentURL: string,
@@ -8,7 +9,7 @@ export const getPeople = (
 	reject: Function
 ) => {
 	axios
-		.get(currentURL.replace(/^http:\/\//i, 'https://'))
+		.get(convertToHTTPS(currentURL))
 		.then((res) => {
 			const newPeople = people.concat(res.data.results);
 			// if data.next is in object, rerun with new URL, else resolve the promise with concatenated data

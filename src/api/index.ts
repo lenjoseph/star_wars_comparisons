@@ -4,6 +4,7 @@ import { getStarships } from './services/getStarships';
 import { getCommonFilms } from './services/getCommonFilms';
 import axios from 'axios';
 import { Person, People } from '../types/index';
+import { convertToHTTPS } from './helpers/safeURL';
 
 export const comparePeople = async (p1: string, p2: string, people: People) => {
 	// get objects associated with names
@@ -31,7 +32,7 @@ export const comparePeople = async (p1: string, p2: string, people: People) => {
 	const commonFilmNames: string[] = await Promise.all(
 		commonFilms.map((url) =>
 			axios
-				.get(url.replace(/^http:\/\//i, 'https://'))
+				.get(convertToHTTPS(url))
 				.then((res: { data: { title: string } }) => {
 					return res.data.title;
 				})

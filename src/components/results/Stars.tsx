@@ -32,6 +32,7 @@ const Stars = () => {
 				width: `100%`,
 				zIndex: -1,
 				animation: `zoomOut 50s infinite`,
+				animationTimingFunction: 'linear',
 			}}
 		>
 			{stars.map((elem) => {

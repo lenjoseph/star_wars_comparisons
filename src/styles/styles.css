@@ -231,6 +231,45 @@ body {
 	}
 }
 
+@keyframes streak1 {
+	0% {
+		opacity: 0;
+	}
+	20% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		transform: translate3d(-500px, 450px, 400px);
+	}
+}
+
+@-webkit-keyframes streak1 {
+	0% {
+		opacity: 0;
+	}
+	20% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		transform: translate3d(-500px, 450px, 400px);
+	}
+}
+
+@keyframes streak2 {
+	0% {
+		opacity: 0;
+	}
+	20% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		transform: translate3d(700px, -150px, -50px);
+	}
+}
+
 @keyframes zoomOut {
 	0% {
 		transform: translateZ(200px);

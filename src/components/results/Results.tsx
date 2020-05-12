@@ -23,8 +23,16 @@ const Results = () => {
 		<div className={cn.container}>
 			<Stars />
 			<div
+				className={cn.cometOne}
+				style={{ animation: `streak1 1.8s linear`, animationDelay: `5s` }}
+			></div>
+			<div
+				className={cn.cometTwo}
+				style={{ animation: `streak2 3.1s linear`, animationDelay: `8s` }}
+			></div>
+			<div
 				style={{
-					animation: 'slide 50s linear',
+					animation: 'slide 40s linear',
 					animationIterationCount: 'infinite',
 				}}
 				className={cn.slideText}
@@ -50,6 +58,28 @@ const Results = () => {
 };
 
 const cn = {
+	cometOne: css`
+		position: absolute;
+		height: 2px;
+		width: 2px;
+		top: 20%;
+		left: 80%;
+		border-radius: 50%;
+		background: #f8f8f8;
+		opacity: 0;
+		z-index: -1;
+	`,
+	cometTwo: css`
+		position: absolute;
+		height: 2px;
+		width: 2px;
+		top: 30%;
+		left: 2%;
+		border-radius: 50%;
+		background: #f8f8f8;
+		opacity: 0;
+		z-index: -1;
+	`,
 	container: css`
 		display: -webkit-box;
 		display: -ms-flexbox;

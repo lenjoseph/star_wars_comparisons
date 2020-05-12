@@ -31,13 +31,13 @@ const Stars = () => {
 				height: `100%`,
 				width: `100%`,
 				zIndex: -1,
-				animation: `zoomOut 50s infinite`,
+				animation: `zoomOut 40s infinite`,
 				animationTimingFunction: 'linear',
 			}}
 		>
 			{stars.map((elem) => {
 				return (
-					<div
+					<span
 						key={elem.key}
 						style={{
 							position: 'absolute',
@@ -49,7 +49,7 @@ const Stars = () => {
 							left: `${elem.left}`,
 							zIndex: elem.zIndex,
 							margin: `${elem.margin}`,
-							animation: `flicker ${elem.animationTiming} infinite, grow 50s infinite`,
+							animation: `flicker ${elem.animationTiming} infinite, grow 40s infinite`,
 						}}
 					/>
 				);

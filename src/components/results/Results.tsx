@@ -5,6 +5,7 @@ import '../../styles/styles.css';
 import { hideResults } from '../../actions/results/results';
 import { setLoadingTrue, setLoadingFalse } from '../../actions/main/loading';
 import Stars from './Stars';
+import Comet from './Comet';
 import { RootState } from '../../types';
 
 const Results = () => {
@@ -22,14 +23,12 @@ const Results = () => {
 	return (
 		<div className={cn.container}>
 			<Stars />
-			<div
-				className={cn.cometOne}
-				style={{ animation: `streak1 1.2s linear`, animationDelay: `3s` }}
-			></div>
-			<div
-				className={cn.cometTwo}
-				style={{ animation: `streak2 3.1s linear`, animationDelay: `7s` }}
-			></div>
+			<Comet top="20%" left="80%" animation="streak1" animationDelay="3s" />
+			<Comet top="30%" left="2%" animation="streak2" animationDelay="7s" />
+			<Comet top="80%" left="70%" animation="streak3" animationDelay="10s" />
+			<Comet top="45%" left="10%" animation="streak4" animationDelay="14s" />
+			<Comet top="95%" left="80%" animation="streak5" animationDelay="22s" />
+			<Comet top="12%" left="97%" animation="streak6" animationDelay="26s" />
 			<div
 				style={{
 					animation: 'slide 40s linear',
@@ -58,28 +57,6 @@ const Results = () => {
 };
 
 const cn = {
-	cometOne: css`
-		position: absolute;
-		height: 2px;
-		width: 2px;
-		top: 20%;
-		left: 80%;
-		border-radius: 50%;
-		background: #f8f8f8;
-		opacity: 0;
-		z-index: -1;
-	`,
-	cometTwo: css`
-		position: absolute;
-		height: 2px;
-		width: 2px;
-		top: 30%;
-		left: 2%;
-		border-radius: 50%;
-		background: #f8f8f8;
-		opacity: 0;
-		z-index: -1;
-	`,
 	container: css`
 		display: -webkit-box;
 		display: -ms-flexbox;

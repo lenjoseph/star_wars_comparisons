@@ -285,7 +285,7 @@ body {
 
 	7.5% {
 		opacity: 0;
-		transform: translate3d(-800px, -350px, -200px);
+		transform: translate3d(-1000px, -550px, -200px);
 	}
 }
 
@@ -296,7 +296,7 @@ body {
 
 	7.5% {
 		opacity: 0;
-		transform: translate3d(-800px, -350px, -200px);
+		transform: translate3d(-900px, -450px, -200px);
 	}
 }
 
@@ -307,7 +307,7 @@ body {
 
 	11% {
 		opacity: 0;
-		transform: translate3d(700px, 50px, -100px);
+		transform: translate3d(1000px, 250px, -100px);
 	}
 }
 
@@ -318,7 +318,7 @@ body {
 
 	11% {
 		opacity: 0;
-		transform: translate3d(700px, 50px, -100px);
+		transform: translate3d(800px, 50px, -100px);
 	}
 }
 

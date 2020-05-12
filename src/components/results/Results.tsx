@@ -27,8 +27,8 @@ const Results = () => {
 			<Comet top="30%" left="2%" animation="streak2" animationDelay="7s" />
 			<Comet top="80%" left="70%" animation="streak3" animationDelay="10s" />
 			<Comet top="45%" left="10%" animation="streak4" animationDelay="14s" />
-			<Comet top="95%" left="80%" animation="streak5" animationDelay="22s" />
-			<Comet top="62%" left="97%" animation="streak6" animationDelay="26s" />
+			<Comet top="95%" left="80%" animation="streak5" animationDelay="21s" />
+			<Comet top="62%" left="100%" animation="streak6" animationDelay="26s" />
 			<div
 				style={{
 					animation: 'slide 40s linear',

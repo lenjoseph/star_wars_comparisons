@@ -25,9 +25,9 @@ const Results = () => {
 			<Stars />
 			<Comet top="20%" left="80%" animation="streak1" animationDelay="3s" />
 			<Comet top="30%" left="2%" animation="streak2" animationDelay="7s" />
-			<Comet top="80%" left="70%" animation="streak3" animationDelay="10s" />
-			<Comet top="45%" left="10%" animation="streak4" animationDelay="14s" />
-			<Comet top="95%" left="80%" animation="streak5" animationDelay="21s" />
+			<Comet top="80%" left="70%" animation="streak3" animationDelay="13s" />
+			<Comet top="45%" left="1%" animation="streak4" animationDelay="14s" />
+			<Comet top="95%" left="40%" animation="streak5" animationDelay="21s" />
 			<Comet top="62%" left="100%" animation="streak6" animationDelay="26s" />
 			<div
 				style={{

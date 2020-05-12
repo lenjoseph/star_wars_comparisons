@@ -240,7 +240,7 @@ body {
 	}
 	100% {
 		opacity: 0;
-		transform: translate3d(-500px, 450px, 400px);
+		transform: translate3d(-500px, 450px, 200px);
 	}
 }
 
@@ -253,11 +253,24 @@ body {
 	}
 	100% {
 		opacity: 0;
-		transform: translate3d(-500px, 450px, 400px);
+		transform: translate3d(-500px, 450px, 200px);
 	}
 }
 
 @keyframes streak2 {
+	0% {
+		opacity: 0;
+	}
+	20% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		transform: translate3d(700px, -150px, -50px);
+	}
+}
+
+@-webkit-keyframes streak2 {
 	0% {
 		opacity: 0;
 	}

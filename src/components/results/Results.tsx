@@ -24,11 +24,11 @@ const Results = () => {
 			<Stars />
 			<div
 				className={cn.cometOne}
-				style={{ animation: `streak1 1.8s linear`, animationDelay: `5s` }}
+				style={{ animation: `streak1 1.2s linear`, animationDelay: `3s` }}
 			></div>
 			<div
 				className={cn.cometTwo}
-				style={{ animation: `streak2 3.1s linear`, animationDelay: `8s` }}
+				style={{ animation: `streak2 3.1s linear`, animationDelay: `7s` }}
 			></div>
 			<div
 				style={{

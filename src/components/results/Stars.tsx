@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../../styles/styles.css';
+import '../../styles/animations/stars.css';
 
 const generateStars = () => {
 	let stars = [...Array.from({ length: 160 }, (v, k) => k + 1)].map((elem) => {

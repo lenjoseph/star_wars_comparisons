@@ -1,6 +1,6 @@
 import React from 'react';
 import { css } from 'emotion';
-import '../../styles/styles.css';
+import '../../styles/animations/comets.css';
 
 type CometProps = {
 	top: string;

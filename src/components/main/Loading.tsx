@@ -1,23 +1,22 @@
-import React from "react";
-import { css } from "emotion";
-import "../../styles/styles.css";
+import React from 'react';
+import { css } from 'emotion';
+import '../../styles/styles.css';
+import '../../styles/animations/loading.css';
 
 const Loading = () => {
 	return (
 		<div className={cn.container}>
-			<p className={cn.loadingText}>
-				Contacting the Imperial Data Center
-			</p>
+			<p className={cn.loadingText}>Contacting the Imperial Data Center</p>
 			<div
-				style={{ animation: ".75s beat1 infinite" }}
+				style={{ animation: '.75s beat1 infinite' }}
 				className={cn.loadingDot}
 			></div>
 			<div
-				style={{ animation: ".75s beat2 infinite" }}
+				style={{ animation: '.75s beat2 infinite' }}
 				className={cn.loadingDot}
 			></div>
 			<div
-				style={{ animation: ".75s beat3 infinite" }}
+				style={{ animation: '.75s beat3 infinite' }}
 				className={cn.loadingDot}
 			></div>
 		</div>

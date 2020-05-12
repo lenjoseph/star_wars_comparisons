@@ -1,0 +1,161 @@
+@-webkit-keyframes beat1 {
+	0% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	10% {
+		-webkit-transform: scale(2);
+		transform: scale(2);
+	}
+
+	43.3% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	76.6% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
+
+@keyframes beat1 {
+	0% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	10% {
+		-webkit-transform: scale(2);
+		transform: scale(2);
+	}
+
+	43.3% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	76.6% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
+
+@-webkit-keyframes beat2 {
+	0% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	10% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	43.3% {
+		-webkit-transform: scale(2);
+		transform: scale(2);
+	}
+
+	76.6% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
+
+@keyframes beat2 {
+	0% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	10% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	43.3% {
+		-webkit-transform: scale(2);
+		transform: scale(2);
+	}
+
+	76.6% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
+
+@-webkit-keyframes beat3 {
+	0% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	10% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	43.3% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	76.6% {
+		-webkit-transform: scale(2);
+		transform: scale(2);
+	}
+
+	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
+
+@keyframes beat3 {
+	0% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	10% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	43.3% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	76.6% {
+		-webkit-transform: scale(2);
+		transform: scale(2);
+	}
+
+	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}

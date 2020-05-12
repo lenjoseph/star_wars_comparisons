@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { css } from 'emotion';
 import '../../styles/styles.css';
+import '../../styles/animations/results.css';
 import { hideResults } from '../../actions/results/results';
 import { setLoadingTrue, setLoadingFalse } from '../../actions/main/loading';
 import Stars from './Stars';

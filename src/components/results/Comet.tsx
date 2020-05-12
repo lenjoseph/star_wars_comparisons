@@ -29,7 +29,7 @@ const cn = {
 		height: 2px;
 		width: 2px;
 		border-radius: 50%;
-		background: #f8f8f8;
+		background: #ffffff;
 		opacity: 0;
 		z-index: -1;
 	`,

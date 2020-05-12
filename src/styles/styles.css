@@ -351,7 +351,7 @@ body {
 
 	27% {
 		opacity: 0;
-		transform: translate3d(-1000px, 80px, 10px);
+		transform: translate3d(-1100px, -100px, 400px);
 	}
 }
 
@@ -362,7 +362,7 @@ body {
 
 	27% {
 		opacity: 0;
-		transform: translate3d(-1000px, 80px, 10px);
+		transform: translate3d(-1100px, 80px, 10px);
 	}
 }
 

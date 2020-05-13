@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../../styles/animations/stars.css';
-import { generateStars } from '../../api/helpers/generateStars';
+import { generateStars } from './helpers/generateStars';
 
 const Stars = () => {
 	const [stars] = useState(generateStars());

@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
-import { getPeople } from '../../api/services/getPeople';
-import { setPeople } from '../../actions/analysis/people';
-import { setLoadingFalse } from '../../actions/main/loading';
+import { fetchPeople } from '../../actions/analysis/people';
 import { css } from 'emotion';
-import { People, RootState, Person } from '../../types/index';
+import { RootState } from '../../types/index';
 import Header from './Header';
 import Disclaimer from './Disclaimer';
 import Loading from './Loading';
@@ -21,25 +19,8 @@ const Main = () => {
 		state.showingResults.showingResults;
 	const showingResults = useSelector(selectShowingResults);
 	useEffect(() => {
-		new Promise((resolve, reject) => {
-			getPeople('https://swapi.dev/api/people/', [], resolve, reject);
-		})
-			.then((res: People) => {
-				const people = res.map((person: Person) => {
-					return {
-						name: person.name,
-						films: person.films,
-						homeworld: person.homeworld,
-						starships: person.starships,
-						vehicles: person.vehicles,
-					};
-				});
-				dispatch(setPeople(people));
-				dispatch(setLoadingFalse());
-			})
-			.catch((err) => {
-				console.log(JSON.stringify({ error: err }));
-			});
+		// dispatch redux thunk to retrieve data and hydrate state
+		dispatch(fetchPeople(dispatch));
 	}, []);
 	return (
 		<div className={cn.container}>

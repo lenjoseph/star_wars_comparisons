@@ -2,7 +2,6 @@ import { getHomeworlds } from './services/getHomeworld';
 import { getVehicles } from './services/getVehicles';
 import { getStarships } from './services/getStarships';
 import { getCommonFilms } from './services/getCommonFilms';
-import axios from 'axios';
 import { Person, People } from '../types/index';
 import { convertToHTTPS } from './helpers/safeURL';
 
@@ -31,11 +30,10 @@ export const comparePeople = async (p1: string, p2: string, people: People) => {
 	// get names of shared films
 	const commonFilmNames: string[] = await Promise.all(
 		commonFilms.map((url) =>
-			axios
-				.get(convertToHTTPS(url))
-				.then((res: { data: { title: string } }) => {
-					return res.data.title;
-				})
+			fetch(convertToHTTPS(url)).then(async (res) => {
+				const data = await res.json();
+				return data.title;
+			})
 		)
 	);
 

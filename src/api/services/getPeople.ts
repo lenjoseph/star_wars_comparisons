@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { People } from '../../types';
 import { convertToHTTPS } from '../helpers/safeURL';
 
@@ -8,14 +7,14 @@ export const getPeople = (
 	resolve: Function,
 	reject: Function
 ) => {
-	axios
-		.get(convertToHTTPS(currentURL))
-		.then((res) => {
-			const newPeople = people.concat(res.data.results);
+	fetch(convertToHTTPS(currentURL))
+		.then(async (res) => {
+			const data = await res.json();
+			const newPeople = people.concat(data.results);
 			// if data.next is in object, rerun with new URL, else resolve the promise with concatenated data
-			res.data.next === null
+			data.next === null
 				? resolve(newPeople)
-				: getPeople(res.data.next, newPeople, resolve, reject);
+				: getPeople(data.next, newPeople, resolve, reject);
 		})
 		.catch((err) => {
 			console.log(JSON.stringify({ error: err }));
